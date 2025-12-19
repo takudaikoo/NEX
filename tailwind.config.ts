@@ -12,7 +12,10 @@ const config: Config = {
                     black: '#020b05', // Deep dark green-black
                     green: '#00ff41', // Matrix Green
                     cyan: '#008F11',  // Darker Matrix Green (replacing cyan)
-                    dark: '#001a05'   // Dark green
+                    dark: '#001a05',   // Dark green
+                    midnight: '#0B1026', // New: Midnight Blue for AI Solutions
+                    gold: '#FFD700',     // New: Gold for Emphasis
+                    vermilion: '#E34234' // New: Vermilion for CTA
                 },
                 impact: {
                     red: '#ff0000',   // Pure Red
