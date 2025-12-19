@@ -23,11 +23,20 @@ const config: Config = {
                     deep: '#00102b',  // Deep Blue
                     purple: '#0051ff', // Electric Blue (replacing purple)
                     blue: '#00a2ff'   // Light Blue
+                },
+                tech: {
+                    navy: '#020c1b',      // Main Background
+                    cyan: '#00f3ff',      // Accent A (Electric Cyan)
+                    green: '#00C853',     // Accent B (Signal Green)
+                    'navy-light': '#112240', // Problem Section Background
                 }
             },
             fontFamily: {
                 mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
                 sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                montserrat: ['var(--font-montserrat)', 'sans-serif'],
+                'noto-sans': ['var(--font-noto-sans-jp)', 'sans-serif'],
+                'noto-serif': ['var(--font-noto-serif-jp)', 'serif'],
             },
             animation: {
                 'spin-slow': 'spin 12s linear infinite',
