@@ -14,13 +14,7 @@ import VisionAuthoritySection from './cyber/VisionAuthoritySection';
 import FlowSection from './cyber/FlowSection';
 import FAQSection from './cyber/FAQSection';
 import Footer from './cyber/Footer';
-
-// Define the type for the generated content (can be expanded later if dynamic content is needed)
-type GeneratedContent = {
-    title: string;
-    description: string;
-    sections?: any[];
-};
+import { GeneratedContent } from '@/types';
 
 const PatternCyber: React.FC<{ content: GeneratedContent }> = ({ content }) => {
     return (
