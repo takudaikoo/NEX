@@ -1,72 +1,118 @@
 "use client";
 
-import React from 'react';
-import { Ticket, Clock, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Terminal, Key, ShieldCheck } from 'lucide-react';
 
 const OfferSection: React.FC = () => {
+    const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 59, seconds: 59 });
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft(prev => {
+                let { hours, minutes, seconds } = prev;
+                if (seconds > 0) seconds--;
+                else {
+                    seconds = 59;
+                    if (minutes > 0) minutes--;
+                    else {
+                        minutes = 59;
+                        if (hours > 0) hours--;
+                    }
+                }
+                return { hours, minutes, seconds };
+            });
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <section className="py-24 px-6 bg-[#080808] relative overflow-hidden">
-            {/* Gradient Background */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyber-midnight/80 to-black z-0"></div>
+        <section className="py-24 px-6 relative overflow-hidden">
+            {/* Background Grid Accent */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
             <div className="container mx-auto max-w-4xl relative z-10">
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1 border border-cyber-vermilion text-cyber-vermilion rounded-full text-xs font-bold tracking-widest uppercase mb-4 animate-pulse">
-                        Launch Special
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-bold font-noto-sans text-white mb-4">
-                        通常のご相談 <span className="line-through text-white/40">15,000円</span><br />
-                        <span className="text-cyber-vermilion">【LP限定】体験ハンズオン（30分）：4,980円</span>
-                    </h2>
-                    <p className="text-white/60 text-sm">先着5名様限定。ただの相談ではありません。「実際に手を動かす」実戦体験です。</p>
-                </div>
 
-                {/* Ticket Card */}
-                <div className="relative bg-white/5 border border-white/10 rounded-xl overflow-hidden backdrop-blur-md max-w-3xl mx-auto shadow-2xl">
-                    {/* Decorative Cutouts */}
-                    <div className="absolute top-1/2 -left-3 w-6 h-6 bg-[#080808] rounded-full border border-white/20"></div>
-                    <div className="absolute top-1/2 -right-3 w-6 h-6 bg-[#080808] rounded-full border border-white/20"></div>
-                    <div className="absolute top-1/2 left-4 right-4 h-px bg-white/10 border-t border-dashed border-white/20"></div>
+                {/* Visual Concept: Holographic Access Terminal (Visualizing 'Control') */}
+                <div className="bg-[#0B1026]/90 border border-cyber-green/30 backdrop-blur-xl rounded-sm shadow-[0_0_50px_rgba(0,255,65,0.1)] overflow-hidden">
 
-                    <div className="grid md:grid-cols-[2fr_1fr] h-full">
-                        {/* Left Side: Details */}
-                        <div className="p-8 md:p-12 flex flex-col justify-center space-y-6">
-                            <div className="flex items-center gap-3 text-cyber-gold font-mono text-sm tracking-widest uppercase">
-                                <Ticket size={16} />
-                                Co-Pilot Ticket
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-white mb-2">Hands-on Experience</h3>
-                                <p className="text-white/60 uppercase tracking-widest text-xs">AI Development / 30min Session</p>
-                            </div>
-                            <div className="flex items-center gap-2 text-white/80">
-                                <Clock size={16} className="text-cyber-vermilion" />
-                                <span className="font-mono font-bold">30:00</span>
-                                <span className="text-xs text-white/40 ml-2">Intensive Coding</span>
-                            </div>
+                    {/* Terminal Header */}
+                    <div className="bg-black/50 px-6 py-2 border-b border-cyber-green/20 flex items-center justify-between">
+                        <div className="flex gap-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                         </div>
-
-                        {/* Right Side: Price */}
-                        <div className="bg-cyber-vermilion/90 p-8 md:p-12 flex flex-col justify-center items-center text-center text-white">
-                            <div className="text-white/80 line-through text-sm mb-1">¥15,000</div>
-                            <div className="text-4xl font-bold font-mono mb-2">¥4,980</div>
-                            <div className="text-xs uppercase tracking-widest opacity-80">(TAX IN)</div>
+                        <div className="text-[10px] font-mono text-cyber-green/60 tracking-widest">
+                            ACCESS_LEVEL: ADMIN
                         </div>
                     </div>
-                </div>
 
-                {/* CTA */}
-                <div className="mt-12 text-center">
-                    <button className="group relative w-full md:w-auto px-12 py-5 bg-cyber-vermilion text-white font-bold text-lg rounded-full shadow-[0_10px_30px_rgba(227,66,52,0.3)] overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_50px_rgba(227,66,52,0.5)]">
-                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                        <span className="relative z-10 flex items-center justify-center gap-3">
-                            体験セッションに申し込む
-                            <ArrowRight size={20} />
-                        </span>
-                    </button>
-                    <div className="mt-4 flex items-center justify-center gap-2 text-xs text-white/40">
-                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                        無理な勧誘は一切ありません。あなたの可能性を診断します。
+                    <div className="p-8 md:p-12 relative">
+                        {/* Scanning Line */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-cyber-green/20 shadow-[0_0_20px_rgba(0,255,65,0.5)] animate-scan-down pointer-events-none"></div>
+
+                        <div className="grid md:grid-cols-2 gap-12">
+                            {/* Left: Input / Command */}
+                            <div className="space-y-6 font-mono">
+                                <div>
+                                    <div className="flex items-center gap-2 text-cyber-vermilion mb-2">
+                                        <Terminal size={18} />
+                                        <span className="text-sm font-bold animate-pulse">SYSTEM WARNING</span>
+                                    </div>
+                                    <h3 className="text-3xl font-bold text-white mb-2">
+                                        CO-PILOT<br />
+                                        AUTHORIZATION
+                                    </h3>
+                                    <p className="text-gray-400 text-sm">
+                                        AI制御権限を付与します。<br />
+                                        定員に達し次第、アクセスは遮断されます。
+                                    </p>
+                                </div>
+
+                                <div className="bg-black/40 p-4 border border-cyber-green/10 rounded">
+                                    <div className="flex justify-between text-xs text-gray-500 mb-2">
+                                        <span>SESSION EXPIRES IN:</span>
+                                    </div>
+                                    <div className="flex gap-4 text-2xl font-bold text-cyber-gold font-mono tracking-widest">
+                                        <div>0{timeLeft.hours}</div>
+                                        <div className="animate-pulse">:</div>
+                                        <div>{timeLeft.minutes < 10 ? `0${timeLeft.minutes}` : timeLeft.minutes}</div>
+                                        <div className="animate-pulse">:</div>
+                                        <div>{timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right: The "Key" (Offer Details) */}
+                            <div className="flex flex-col justify-center items-center text-center">
+                                <div className="w-full bg-cyber-green/5 border border-cyber-green/30 p-6 rounded-lg relative group hover:bg-cyber-green/10 transition-colors">
+                                    {/* Corner Accents */}
+                                    <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-cyber-green"></div>
+                                    <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-cyber-green"></div>
+                                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-cyber-green"></div>
+                                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-cyber-green"></div>
+
+                                    <div className="mb-4 text-cyber-green">
+                                        <Key size={32} className="mx-auto" />
+                                    </div>
+                                    <div className="text-3xl font-bold text-white mb-2 font-mono">
+                                        ¥4,980
+                                    </div>
+                                    <div className="text-xs text-gray-400 mb-6 font-mono">
+                                        TOKEN-ID: #8X-99<br />
+                                        TYPE: SINGLE_SESSION
+                                    </div>
+
+                                    <button className="w-full py-3 bg-cyber-vermilion hover:bg-red-600 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(227,66,52,0.4)]">
+                                        Execute Sequence
+                                    </button>
+                                </div>
+                                <div className="flex items-center gap-2 mt-4 text-[10px] text-gray-500 uppercase tracking-widest">
+                                    <ShieldCheck size={12} />
+                                    Secure Encrypted Connection
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
