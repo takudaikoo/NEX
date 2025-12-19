@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 const WorksSection: React.FC = () => {
@@ -29,10 +30,12 @@ const WorksSection: React.FC = () => {
                             </div>
                         </div>
                         <div className="order-1 md:order-2 relative h-[300px] md:h-[400px] bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10 overflow-hidden group">
-                            {/* Mockup Placeholder */}
-                            <div className="absolute inset-0 flex items-center justify-center text-white/20 group-hover:scale-105 transition-transform duration-500">
-                                [MacBook Mockup Image: Status PAID]
-                            </div>
+                            <Image
+                                src="/images/flow1.jpg"
+                                alt="Automation Case Mockup"
+                                fill
+                                className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            />
                             <div className="absolute bottom-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-tech-green animate-pulse"></div>
@@ -58,10 +61,12 @@ const WorksSection: React.FC = () => {
                             </div>
                         </div>
                         <div className="order-1 md:order-1 relative h-[300px] md:h-[400px] bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10 overflow-hidden group">
-                            {/* Mockup Placeholder */}
-                            <div className="absolute inset-0 flex items-center justify-center text-white/20 group-hover:scale-105 transition-transform duration-500">
-                                [UI Mockup: Video Player + Revenue Graph]
-                            </div>
+                            <Image
+                                src="/images/flow2.jpg"
+                                alt="Platform Case Mockup"
+                                fill
+                                className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            />
                         </div>
                     </div>
                 </div>
