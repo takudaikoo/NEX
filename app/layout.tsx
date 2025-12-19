@@ -21,7 +21,7 @@ const notoSerifJP = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-    title: "Tech Curator | NEX",
+    title: "Tech Curator | XADS",
     description: "Architect, not Mason. Tech Curator Official LP.",
 };
 
