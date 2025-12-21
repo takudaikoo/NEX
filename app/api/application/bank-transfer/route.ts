@@ -7,7 +7,11 @@ const resend = new Resend(resendApiKey || 're_123'); // Safe fallback for build
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { name, email, company, industry, role, consultation, annualIncome, skills } = body;
+        const { name, email, sport, requesterType, requestType, consultation, goals } = body;
+
+        // Map values to Japanese for email
+        const getRequesterType = (type: string) => type === 'player' ? 'プレーヤー' : 'コーチ';
+        const getRequestType = (type: string) => type === 'personal' ? '個人依頼' : 'チーム依頼';
 
         // Email to User
         await resend.emails.send({
@@ -41,9 +45,11 @@ export async function POST(req: NextRequest) {
                 
                 <h3>お申し込み内容</h3>
                 <ul>
-                    <li>会社名: ${company}</li>
-                    <li>業種: ${industry}</li>
-                    <li>担当業務: ${role}</li>
+                    <li>競技名: ${sport}</li>
+                    <li>依頼主: ${getRequesterType(requesterType)}</li>
+                    <li>依頼種別: ${getRequestType(requestType)}</li>
+                    <li>相談内容: ${consultation || 'なし'}</li>
+                    <li>故障歴・目標など: ${goals || 'なし'}</li>
                 </ul>
                 
                 <p>ご入金確認後、担当者より日程調整のご連絡を差し上げます。</p>

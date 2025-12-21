@@ -8,7 +8,7 @@ const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { name, email, company, industry, role, consultation, annualIncome, skills } = body;
+        const { name, email, sport, requesterType, requestType, consultation, goals } = body;
 
         if (!stripe) {
             console.error("Stripe Secret Key is missing.");
@@ -29,21 +29,18 @@ export async function POST(req: NextRequest) {
                 },
             ],
             mode: 'payment',
-            success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cyber/application/success`,
-            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cyber/application`,
+            success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/impact/application/success`, // Updated to impact success URL
+            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/impact/application`, // Updated to impact cancel URL
             customer_email: email,
             metadata: {
                 name,
-                company,
-                industry,
-                role,
-                consultation: consultation ? consultation.substring(0, 100) + '...' : '', // Truncate for metadata limits if needed
-                // Note: Metadata values must be strings and max 500 chars total metadata size is limited. 
-                // We might want to save full details to a DB in a real app, 
-                // but for now we trust the email or minimal metadata.
+                sport,
+                requesterType,
+                requestType,
+                consultation: consultation ? consultation.substring(0, 100) + '...' : '',
                 full_details: JSON.stringify({
-                    consultation, annualIncome, skills
-                }).substring(0, 500) // Ensure we don't hit limits
+                    consultation, goals
+                }).substring(0, 500)
             },
         });
 

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ApplicationPage() {
     return (
-        <div className="relative min-h-screen bg-cyber-midnight text-white selection:bg-cyber-vermilion selection:text-white">
+        <div className="relative min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black">
             {/* Background */}
             <CyberThreeBackground />
 

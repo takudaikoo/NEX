@@ -34,7 +34,7 @@ const OfferSection: React.FC = () => {
             <div className="container mx-auto max-w-4xl relative z-10">
 
                 {/* Visual Concept: Holographic Access Terminal (Visualizing 'Control') */}
-                <div className="bg-[#0B1026]/90 border border-cyber-green/30 backdrop-blur-xl rounded-sm shadow-[0_0_50px_rgba(0,255,65,0.1)] overflow-hidden">
+                <div className="bg-cyber-black/90 border border-cyber-green/30 backdrop-blur-xl rounded-sm shadow-[0_0_50px_rgba(0,255,65,0.1)] overflow-hidden">
 
                     {/* Terminal Header */}
                     <div className="bg-black/50 px-6 py-2 border-b border-cyber-green/20 flex items-center justify-between">
@@ -56,7 +56,7 @@ const OfferSection: React.FC = () => {
                             {/* Left: Input / Command */}
                             <div className="space-y-6 font-mono">
                                 <div>
-                                    <div className="flex items-center gap-2 text-cyber-vermilion mb-2">
+                                    <div className="flex items-center gap-2 text-cyber-green mb-2">
                                         <Terminal size={18} />
                                         <span className="text-sm font-bold animate-pulse">SYSTEM WARNING</span>
                                     </div>
@@ -104,7 +104,7 @@ const OfferSection: React.FC = () => {
                                         TYPE: SINGLE_SESSION
                                     </div>
 
-                                    <Link href="/cyber/application" className="w-full py-3 bg-cyber-vermilion hover:bg-red-600 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(227,66,52,0.4)] block">
+                                    <Link href="/cyber/application" className="w-full py-3 bg-cyber-green hover:bg-emerald-400 text-black font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(0,255,65,0.4)] block">
                                         Execute Sequence
                                     </Link>
                                 </div>

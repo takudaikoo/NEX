@@ -14,12 +14,12 @@ const SolutionSection: React.FC = () => {
 
                     <div>
                         <div className="flex items-center gap-3 text-cyber-midnight mb-6">
-                            <Users size={24} className="text-cyber-vermilion" />
+                            <Users size={24} className="text-cyber-green" />
                             <span className="font-bold uppercase tracking-widest text-sm">The Co-Pilot Method</span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold font-noto-sans text-cyber-midnight mb-8 leading-tight">
                             必要なのは「正解」ではなく<br />
-                            <span className="text-cyber-vermilion">「あなたの実務」</span>を<br />
+                            <span className="text-cyber-green">「あなたの実務」</span>を<br />
                             一緒に解くパートナーです。
                         </h2>
                         <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
@@ -60,7 +60,7 @@ const SolutionSection: React.FC = () => {
                                 <div className="relative z-10 text-white font-bold text-2xl tracking-widest uppercase">
                                     Problem Solved
                                 </div>
-                                <div className="absolute inset-0 bg-cyber-vermilion/20 mix-blend-overlay"></div>
+                                <div className="absolute inset-0 bg-cyber-green/20 mix-blend-overlay"></div>
                             </div>
 
                             {/* Floating Success Toast */}
@@ -71,7 +71,7 @@ const SolutionSection: React.FC = () => {
                         </div>
 
                         {/* Back Glow */}
-                        <div className="absolute -inset-4 bg-cyber-vermilion/10 blur-[60px] -z-10 rounded-full"></div>
+                        <div className="absolute -inset-4 bg-cyber-green/10 blur-[60px] -z-10 rounded-full"></div>
                     </div>
 
                 </div>

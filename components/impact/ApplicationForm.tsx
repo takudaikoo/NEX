@@ -10,12 +10,11 @@ const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : 
 type FormData = {
     name: string;
     email: string;
-    company: string;
-    industry: string;
-    role: string;
+    sport: string;
+    requesterType: string;
+    requestType: string;
     consultation?: string;
-    annualIncome?: string;
-    skills?: string;
+    goals?: string;
     paymentMethod: 'stripe' | 'transfer';
 };
 
@@ -23,12 +22,11 @@ const ApplicationForm: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
-        company: '',
-        industry: '',
-        role: '',
+        sport: '',
+        requesterType: 'player',
+        requestType: 'personal',
         consultation: '',
-        annualIncome: '',
-        skills: '',
+        goals: '',
         paymentMethod: 'stripe',
     });
     const [isLoading, setIsLoading] = useState(false);
@@ -90,25 +88,25 @@ const ApplicationForm: React.FC = () => {
 
     if (success) {
         return (
-            <div className="max-w-2xl mx-auto p-12 bg-white/5 border border-white/10 rounded-3xl text-center">
+            <div className="max-w-2xl mx-auto p-12 bg-gray-50 border border-gray-200 rounded-3xl text-center shadow-lg">
                 <div className="flex justify-center mb-6">
-                    <CheckCircle className="w-16 h-16 text-cyber-green" />
+                    <CheckCircle className="w-16 h-16 text-impact-red" />
                 </div>
-                <h2 className="text-3xl font-bold text-white mb-4">お申し込み完了</h2>
-                <p className="text-white/70 mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">お申し込み完了</h2>
+                <p className="text-gray-600 mb-8">
                     お申し込みありがとうございます。<br />
                     ご入力のご確認メールをお送りしましたので、ご確認ください。<br />
                     振込先情報はメールに記載されております。
                 </p>
-                <div className="p-4 bg-white/5 rounded-xl border border-white/10 text-left mb-8">
-                    <h3 className="text-cyber-green font-bold mb-2">今後の流れ</h3>
-                    <ol className="list-decimal list-inside text-sm text-white/70 space-y-2">
+                <div className="p-4 bg-white rounded-xl border border-gray-200 text-left mb-8">
+                    <h3 className="text-impact-red font-bold mb-2">今後の流れ</h3>
+                    <ol className="list-decimal list-inside text-sm text-gray-600 space-y-2">
                         <li>ご登録のメールアドレスを含む自動返信メールをご確認ください。</li>
                         <li>メールに記載の振込先へ料金をお振込みください。</li>
                         <li>事務局にて入金確認後、正式に解析日程のご案内をお送りします。</li>
                     </ol>
                 </div>
-                <a href="/cyber" className="inline-block px-8 py-3 bg-transparent border border-cyber-green text-cyber-green font-bold hover:bg-cyber-green hover:text-black transition-colors rounded-full">
+                <a href="/impact" className="inline-block px-8 py-3 bg-transparent border border-impact-red text-impact-red font-bold hover:bg-impact-red hover:text-white transition-colors rounded-full">
                     トップページへ戻る
                 </a>
             </div>
@@ -116,8 +114,8 @@ const ApplicationForm: React.FC = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-8 p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-md">
-            <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">お申込みフォーム</h2>
+        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-8 p-8 bg-white/80 border border-gray-200 rounded-3xl backdrop-blur-md shadow-xl">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">お申込みフォーム</h2>
 
             {/* Error Message */}
             {error && (
@@ -129,121 +127,111 @@ const ApplicationForm: React.FC = () => {
 
             {/* Section 1: Basic Info */}
             <div className="space-y-6">
-                <h3 className="text-lg font-bold text-cyber-green">お客様情報 (必須)</h3>
+                <h3 className="text-lg font-bold text-impact-red">お客様情報 (必須)</h3>
 
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-white/80">お名前</label>
+                        <label className="text-sm font-bold text-gray-700">お名前</label>
                         <input
                             type="text"
                             name="name"
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors"
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors"
                             placeholder="山田 太郎"
                         />
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-white/80">メールアドレス</label>
+                        <label className="text-sm font-bold text-gray-700">メールアドレス</label>
                         <input
                             type="email"
                             name="email"
                             required
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors"
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors"
                             placeholder="example@email.com"
                         />
                     </div>
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-white/80">会社名</label>
+                    <label className="text-sm font-bold text-gray-700">競技名</label>
                     <input
                         type="text"
-                        name="company"
+                        name="sport"
                         required
-                        value={formData.company}
+                        value={formData.sport}
                         onChange={handleChange}
-                        className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors"
-                        placeholder="株式会社〇〇"
+                        className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors"
+                        placeholder="例: 野球、陸上競技（短距離）、ゴルフ"
                     />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-white/80">業種</label>
-                        <input
-                            type="text"
-                            name="industry"
+                        <label className="text-sm font-bold text-gray-700">依頼主</label>
+                        <select
+                            name="requesterType"
                             required
-                            value={formData.industry}
+                            value={formData.requesterType}
                             onChange={handleChange}
-                            className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors"
-                            placeholder="IT・通信"
-                        />
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors"
+                        >
+                            <option value="player">プレーヤー</option>
+                            <option value="coach">コーチ</option>
+                        </select>
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-bold text-white/80">担当業務</label>
-                        <input
-                            type="text"
-                            name="role"
+                        <label className="text-sm font-bold text-gray-700">依頼種別</label>
+                        <select
+                            name="requestType"
                             required
-                            value={formData.role}
+                            value={formData.requestType}
                             onChange={handleChange}
-                            className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors"
-                            placeholder="営業・マーケティング"
-                        />
+                            className="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors"
+                        >
+                            <option value="personal">個人依頼</option>
+                            <option value="team">チーム依頼</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
             {/* Section 2: Hearing Info */}
-            <div className="space-y-6 pt-6 border-t border-white/10">
-                <h3 className="text-lg font-bold text-cyber-green">ヒアリング項目 (任意)</h3>
+            <div className="space-y-6 pt-6 border-t border-gray-200">
+                <h3 className="text-lg font-bold text-impact-red">ヒアリング項目 (任意)</h3>
 
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-white/80">現在のご相談内容</label>
+                    <label className="text-sm font-bold text-gray-700">相談内容</label>
                     <textarea
                         name="consultation"
                         value={formData.consultation}
                         onChange={handleChange}
-                        className="w-full h-24 bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors resize-none"
+                        className="w-full h-24 bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors resize-none"
                         placeholder="具体的なお悩みがあればご記入ください"
                     />
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-sm font-bold text-white/80">およその年収</label>
-                    <input
-                        type="text"
-                        name="annualIncome"
-                        value={formData.annualIncome}
-                        onChange={handleChange}
-                        className="w-full bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors"
-                        placeholder="例: 500万円"
-                    />
-                </div>
-
-                <div className="space-y-2">
-                    <label className="text-sm font-bold text-white/80">獲得したいスキルや保有資格など</label>
+                    <label className="text-sm font-bold text-gray-700">故障歴・目標など自由記載</label>
                     <textarea
-                        name="skills"
-                        value={formData.skills}
+                        name="goals"
+                        value={formData.goals}
                         onChange={handleChange}
-                        className="w-full h-24 bg-black/50 border border-white/20 rounded-lg p-3 text-white focus:border-cyber-green focus:outline-none transition-colors resize-none"
-                        placeholder="例: データ分析スキル、TOEIC 800点"
+                        className="w-full h-24 bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-900 focus:border-impact-red focus:outline-none transition-colors resize-none"
+                        placeholder="例: 過去にハムストリングの肉離れあり。来シーズンの大会で〇〇秒を切りたい。"
                     />
                 </div>
             </div>
 
             {/* Section 3: Payment Method */}
-            <div className="space-y-6 pt-6 border-t border-white/10">
-                <h3 className="text-lg font-bold text-cyber-green">お支払い方法</h3>
+            <div className="space-y-6 pt-6 border-t border-gray-200">
+                <h3 className="text-lg font-bold text-impact-red">お支払い方法</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <label className={`relative flex items-center p-4 border rounded-xl cursor-pointer transition-all ${formData.paymentMethod === 'stripe' ? 'border-cyber-green bg-cyber-green/10' : 'border-white/20 bg-black/30 hover:bg-white/5'}`}>
+                    <label className={`relative flex items-center p-4 border rounded-xl cursor-pointer transition-all ${formData.paymentMethod === 'stripe' ? 'border-impact-red bg-impact-red/5' : 'border-gray-200 bg-gray-50 hover:bg-gray-100'}`}>
                         <input
                             type="radio"
                             name="paymentMethod"
@@ -253,15 +241,15 @@ const ApplicationForm: React.FC = () => {
                             className="hidden"
                         />
                         <div className="flex-1">
-                            <div className="font-bold text-white">クレジットカード決済</div>
-                            <div className="text-xs text-white/60">Stripeによる安全な決済です</div>
+                            <div className="font-bold text-gray-900">クレジットカード決済</div>
+                            <div className="text-xs text-gray-500">Stripeによる安全な決済です</div>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.paymentMethod === 'stripe' ? 'border-cyber-green' : 'border-white/40'}`}>
-                            {formData.paymentMethod === 'stripe' && <div className="w-3 h-3 rounded-full bg-cyber-green" />}
+                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.paymentMethod === 'stripe' ? 'border-impact-red' : 'border-gray-400'}`}>
+                            {formData.paymentMethod === 'stripe' && <div className="w-3 h-3 rounded-full bg-impact-red" />}
                         </div>
                     </label>
 
-                    <label className={`relative flex items-center p-4 border rounded-xl cursor-pointer transition-all ${formData.paymentMethod === 'transfer' ? 'border-cyber-green bg-cyber-green/10' : 'border-white/20 bg-black/30 hover:bg-white/5'}`}>
+                    <label className={`relative flex items-center p-4 border rounded-xl cursor-pointer transition-all ${formData.paymentMethod === 'transfer' ? 'border-impact-red bg-impact-red/5' : 'border-gray-200 bg-gray-50 hover:bg-gray-100'}`}>
                         <input
                             type="radio"
                             name="paymentMethod"
@@ -271,11 +259,11 @@ const ApplicationForm: React.FC = () => {
                             className="hidden"
                         />
                         <div className="flex-1">
-                            <div className="font-bold text-white">銀行振込</div>
-                            <div className="text-xs text-white/60">後ほどメールで口座をご案内します</div>
+                            <div className="font-bold text-gray-900">銀行振込</div>
+                            <div className="text-xs text-gray-500">後ほどメールで口座をご案内します</div>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.paymentMethod === 'transfer' ? 'border-cyber-green' : 'border-white/40'}`}>
-                            {formData.paymentMethod === 'transfer' && <div className="w-3 h-3 rounded-full bg-cyber-green" />}
+                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.paymentMethod === 'transfer' ? 'border-impact-red' : 'border-gray-400'}`}>
+                            {formData.paymentMethod === 'transfer' && <div className="w-3 h-3 rounded-full bg-impact-red" />}
                         </div>
                     </label>
                 </div>
@@ -286,7 +274,7 @@ const ApplicationForm: React.FC = () => {
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-cyber-green text-black font-bold py-4 rounded-xl hover:bg-cyber-green/90 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-impact-red text-white font-bold py-4 rounded-xl hover:bg-red-600 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_14px_0_rgba(255,0,0,0.39)]"
                 >
                     {isLoading ? (
                         <>
@@ -300,7 +288,7 @@ const ApplicationForm: React.FC = () => {
                         </>
                     )}
                 </button>
-                <p className="text-center text-xs text-white/40 mt-4">
+                <p className="text-center text-xs text-gray-400 mt-4">
                     お客様の個人情報は厳重に管理されます。
                 </p>
             </div>

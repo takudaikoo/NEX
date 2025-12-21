@@ -31,7 +31,7 @@ const WorksSection: React.FC = () => {
                         </div>
                         <div className="order-1 md:order-2 relative h-[300px] md:h-[400px] bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10 overflow-hidden group">
                             <Image
-                                src="/images/flow1.jpg"
+                                src="/images/flow2.jpg"
                                 alt="Automation Case Mockup"
                                 fill
                                 className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
@@ -62,7 +62,7 @@ const WorksSection: React.FC = () => {
                         </div>
                         <div className="order-1 md:order-1 relative h-[300px] md:h-[400px] bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10 overflow-hidden group">
                             <Image
-                                src="/images/flow2.jpg"
+                                src="/images/flow1.jpg"
                                 alt="Platform Case Mockup"
                                 fill
                                 className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"

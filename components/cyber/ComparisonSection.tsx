@@ -5,11 +5,11 @@ import { X, Check, ShieldAlert, MonitorPlay, Users } from 'lucide-react';
 
 const ComparisonSection: React.FC = () => {
     return (
-        <section className="py-24 px-6 bg-[#0B1026] text-white">
+        <section className="py-24 px-6 bg-cyber-black text-white">
             <div className="container mx-auto max-w-6xl">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold font-noto-sans mb-4">
-                        なぜ、他では<span className="text-cyber-vermilion">「現場レベル」</span>に<br className="md:hidden" />到達できないのか？
+                        なぜ、他では<span className="text-cyber-green">「現場レベル」</span>に<br className="md:hidden" />到達できないのか？
                     </h2>
                     <p className="text-white/60">既存の学習方法には、決定的な欠陥があります。</p>
                 </div>

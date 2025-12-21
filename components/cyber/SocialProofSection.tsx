@@ -35,7 +35,7 @@ const SocialProofSection: React.FC = () => {
                             <span className="text-xs text-gray-500 mr-1">30歳 男性 / 営業職</span>
                             <div className="bg-[#E8F0FE] p-6 rounded-2xl rounded-tr-none shadow-sm relative">
                                 <p className="text-gray-800 leading-relaxed">
-                                    ビジネスライクじゃなく、<span className="font-bold text-cyber-vermilion">兄貴のように親身になってくれる</span>のが嬉しかったです。
+                                    ビジネスライクじゃなく、<span className="font-bold text-cyber-green">兄貴のように親身になってくれる</span>のが嬉しかったです。
                                     <br />
                                     「未経験でも大丈夫」という言葉に嘘はありませんでした。自信がつきました！
                                 </p>
@@ -61,7 +61,7 @@ const SocialProofSection: React.FC = () => {
                 {/* Mid-Page CTA */}
                 <div className="mt-20 text-center">
                     <p className="font-bold text-cyber-midnight mb-6">次は、あなたの番です。</p>
-                    <Link href="/cyber/application" className="inline-block px-10 py-4 bg-cyber-vermilion text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                    <Link href="/cyber/application" className="inline-block px-10 py-4 bg-cyber-green text-black font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
                         体験セッションに申し込む
                     </Link>
                     <p className="mt-4 text-xs text-gray-400">体験価格は予告なく終了する場合があります</p>

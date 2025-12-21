@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { Quote, MessageSquare, ChevronDown, Check } from 'lucide-react';
 
 export const SocialProofSection = () => (
@@ -130,6 +131,24 @@ const FAQItem = ({ q, a }: { q: string, a: string }) => (
     </div>
 );
 
+export const FlowLegalFooter = ({ activePage }: { activePage?: 'tokusho-ho' | 'privacy' }) => (
+    <footer className="relative py-12 px-6 overflow-hidden bg-tech-navy border-t border-white/10">
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-sm">
+                <div className="order-2 md:order-1">&copy; 2025 Tech Curator. All rights reserved.</div>
+                <div className="flex gap-6 order-1 md:order-2">
+                    {activePage !== 'tokusho-ho' && (
+                        <Link href="/flow/legal/tokusho-ho" className="hover:text-tech-cyan transition-colors">特定商取引法に基づく表記</Link>
+                    )}
+                    {activePage !== 'privacy' && (
+                        <Link href="/flow/legal/privacy" className="hover:text-tech-cyan transition-colors">プライバシーポリシー</Link>
+                    )}
+                </div>
+            </div>
+        </div>
+    </footer>
+);
+
 export const FooterCTA = () => (
     <footer className="relative py-32 px-6 overflow-hidden">
         {/* Reuse simple background effect or just gradient */}
@@ -143,13 +162,17 @@ export const FooterCTA = () => (
                 あなたのビジネスを進化させましょう。
             </h2>
 
-            <button className="px-12 py-6 bg-tech-cyan text-tech-navy rounded-full font-bold text-xl hover:bg-white hover:scale-105 hover:shadow-[0_0_50px_rgba(0,243,255,0.6)] transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-[0_0_20px_rgba(0,243,255,0.3)]">
+            <Link href="/flow/consultation" className="px-12 py-6 bg-tech-cyan text-tech-navy rounded-full font-bold text-xl hover:bg-white hover:scale-105 hover:shadow-[0_0_50px_rgba(0,243,255,0.6)] transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-[0_0_20px_rgba(0,243,255,0.3)] w-fit">
                 無料相談・デモ依頼はこちら
                 <MessageSquare />
-            </button>
+            </Link>
 
-            <div className="mt-20 border-t border-white/10 pt-8 text-white/20 text-sm">
-                &copy; 2025 Tech Curator. All rights reserved.
+            <div className="mt-20 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-sm">
+                <div className="order-2 md:order-1">&copy; 2025 Tech Curator. All rights reserved.</div>
+                <div className="flex gap-6 order-1 md:order-2">
+                    <Link href="/flow/legal/tokusho-ho" className="hover:text-tech-cyan transition-colors">特定商取引法に基づく表記</Link>
+                    <Link href="/flow/legal/privacy" className="hover:text-tech-cyan transition-colors">プライバシーポリシー</Link>
+                </div>
             </div>
         </div>
     </footer>

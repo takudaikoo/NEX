@@ -8,7 +8,7 @@ const USPSection: React.FC = () => {
         <section className="py-24 px-6 bg-white text-cyber-midnight">
             <div className="container mx-auto max-w-6xl">
                 <div className="text-center mb-20">
-                    <span className="text-cyber-vermilion font-bold tracking-widest uppercase text-sm">Why We Are Different</span>
+                    <span className="text-cyber-green font-bold tracking-widest uppercase text-sm">Why We Are Different</span>
                     <h2 className="text-3xl md:text-5xl font-bold font-noto-sans mt-2">
                         「サイエンス（論理）」と<br />
                         「熱血（感情）」の融合。
@@ -43,7 +43,7 @@ const USPSection: React.FC = () => {
                     {/* Reason 02: Heat */}
                     <div className="grid md:grid-cols-2 gap-12 items-center group">
                         <div className="order-1">
-                            <div className="inline-flex items-center gap-2 text-cyber-vermilion font-bold mb-4">
+                            <div className="inline-flex items-center gap-2 text-cyber-green font-bold mb-4">
                                 <span className="text-5xl opacity-20 font-mono">02</span>
                                 <span className="uppercase tracking-widest">Heat</span>
                             </div>
