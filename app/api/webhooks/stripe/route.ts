@@ -14,6 +14,11 @@ export async function POST(req: NextRequest) {
 
     let event: Stripe.Event;
 
+    if (!stripe) {
+        console.error("Stripe Secret Key is missing.");
+        return NextResponse.json({ error: 'System configuration error' }, { status: 500 });
+    }
+
     try {
         if (!process.env.STRIPE_WEBHOOK_SECRET) {
             // For development without webhook secret (not recommended for production but allows testing)

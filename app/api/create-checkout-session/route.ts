@@ -10,6 +10,11 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { name, email, company, industry, role, consultation, annualIncome, skills } = body;
 
+        if (!stripe) {
+            console.error("Stripe Secret Key is missing.");
+            return NextResponse.json({ error: 'System configuration error' }, { status: 500 });
+        }
+
         if (!process.env.STRIPE_PRICE_ID) {
             throw new Error('STRIPE_PRICE_ID is not defined');
         }
