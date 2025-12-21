@@ -1,8 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 import { PatternType, GeneratedContent } from "../types";
 
-const apiKey = process.env.API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
+const apiKey = process.env.API_KEY;
+let ai: GoogleGenAI | null = null;
+
+if (apiKey) {
+    ai = new GoogleGenAI({ apiKey });
+}
 
 export const generateSiteContent = async (pattern: PatternType): Promise<GeneratedContent> => {
     if (!apiKey) {
@@ -47,6 +51,8 @@ export const generateSiteContent = async (pattern: PatternType): Promise<Generat
             }
         `;
 
+        if (!ai) return getFallbackContent(pattern);
+
         const response = await ai.models.generateContent({
             model: 'gemini-2.0-flash', // Updated to 2.0 or whatever is standard? Legacy had 2.5-flash?
             contents: prompt,
@@ -74,6 +80,8 @@ export const getChatResponse = async (message: string): Promise<string> => {
     }
 
     try {
+        if (!ai) return "システム接続に微細な遅延が発生しています。再試行してください。";
+
         const response = await ai.models.generateContent({
             model: "gemini-2.0-flash",
             contents: `You are an elite sports biomechanics trainer AI. Answer the user's concern briefly and encouragingly. User says: "${message}"`,
