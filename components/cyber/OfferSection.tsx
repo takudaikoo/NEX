@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Terminal, Key, ShieldCheck } from 'lucide-react';
 
 const OfferSection: React.FC = () => {
@@ -103,9 +104,9 @@ const OfferSection: React.FC = () => {
                                         TYPE: SINGLE_SESSION
                                     </div>
 
-                                    <button className="w-full py-3 bg-cyber-vermilion hover:bg-red-600 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(227,66,52,0.4)]">
+                                    <Link href="/cyber/application" className="w-full py-3 bg-cyber-vermilion hover:bg-red-600 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(227,66,52,0.4)] block">
                                         Execute Sequence
-                                    </button>
+                                    </Link>
                                 </div>
                                 <div className="flex items-center gap-2 mt-4 text-[10px] text-gray-500 uppercase tracking-widest">
                                     <ShieldCheck size={12} />

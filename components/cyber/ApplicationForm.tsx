@@ -117,7 +117,7 @@ const ApplicationForm: React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-8 p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-md">
-            <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">動作ドック お申し込みフォーム</h2>
+            <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">お申込みフォーム</h2>
 
             {/* Error Message */}
             {error && (

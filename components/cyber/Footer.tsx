@@ -1,9 +1,14 @@
 "use client";
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Mail } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+    isApplicationPage?: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ isApplicationPage = false }) => {
     return (
         <footer className="bg-[#0B1026] text-white pt-24 pb-8 border-t border-white/5 relative overflow-hidden">
             {/* Background Glow */}
@@ -22,13 +27,29 @@ const Footer: React.FC = () => {
                         私の体が一つしかないため、毎月の受付人数には限りがあります。
                     </p>
 
-                    <button className="group relative w-full md:w-auto px-12 py-5 bg-cyber-vermilion text-white font-bold text-xl rounded-full shadow-[0_10px_40px_rgba(227,66,52,0.4)] overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_60px_rgba(227,66,52,0.6)]">
-                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                        <span className="relative z-10 flex items-center justify-center gap-3">
-                            体験ハンズオン（30分）に申し込む
-                            <ArrowRight size={24} />
-                        </span>
-                    </button>
+                    {isApplicationPage ? (
+                        <a href={`mailto:info@xads.com?subject=30分ハンズオンサポートについて相談&body=${encodeURIComponent(`（以下をご記入の上、送信してください）
+
+お名前：
+貴社名：
+ご役職：
+
+ご相談内容：
+（例：自社の△△業務を動作解析で効率化できるか知りたい、等）`)}`} className="group relative inline-flex items-center justify-center w-full md:w-auto px-12 py-5 bg-cyber-midnight border border-cyber-vermilion text-white font-bold text-xl rounded-full shadow-[0_10px_40px_rgba(227,66,52,0.1)] overflow-hidden transition-all hover:scale-105 hover:bg-cyber-vermilion">
+                            <span className="relative z-10 flex items-center justify-center gap-3">
+                                メールで相談する
+                                <Mail size={24} />
+                            </span>
+                        </a>
+                    ) : (
+                        <Link href="/cyber/application" className="group relative inline-flex items-center justify-center w-full md:w-auto px-12 py-5 bg-cyber-vermilion text-white font-bold text-xl rounded-full shadow-[0_10px_40px_rgba(227,66,52,0.4)] overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_60px_rgba(227,66,52,0.6)]">
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span className="relative z-10 flex items-center justify-center gap-3">
+                                体験ハンズオン（30分）に申し込む
+                                <ArrowRight size={24} />
+                            </span>
+                        </Link>
+                    )}
                     <p className="mt-6 text-sm text-cyber-gold animate-pulse">
                         ※今月の残り枠数：あと<span className="font-bold text-xl mx-1">3</span>名
                     </p>
@@ -37,7 +58,7 @@ const Footer: React.FC = () => {
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
                     <div className="font-mono">© 2024 NEX AI Solutions.</div>
                     <div className="flex gap-6">
-                        <a href="#" className="hover:text-white transition-colors">特定商取引法に基づく表記</a>
+                        <Link href="/legal/tokusho-ho" className="hover:text-white transition-colors">特定商取引法に基づく表記</Link>
                         <a href="#" className="hover:text-white transition-colors">プライバシーポリシー</a>
                     </div>
                 </div>
