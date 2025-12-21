@@ -83,6 +83,9 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
         particlesRef.current = particles;
 
         // 3. Moons (Satellites)
+        const moonsContainer = new THREE.Group();
+        scene.add(moonsContainer);
+
         const moons: { group: THREE.Group, mesh: THREE.Mesh, t: number, speed: number }[] = [];
         const moonCount = 2;
 
@@ -97,10 +100,11 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
 
         const moonGeo = new THREE.IcosahedronGeometry(4, 1);
         const moonMat = new THREE.MeshBasicMaterial({
-            color: 0x88ccff,
+            color: 0xddeeff, // Brighter!
             wireframe: true,
             transparent: true,
-            opacity: 0.15
+            opacity: 0.6 // Much more visible (was 0.15)
+            // Note: linewidth is typically ignored by WebGL renderers on Windows
         });
 
         for (let i = 0; i < moonCount; i++) {
@@ -116,7 +120,7 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
             const moonCore = new THREE.Mesh(moonCoreGeo, moonCoreMat);
             moonMesh.add(moonCore);
 
-            scene.add(moonGroup);
+            moonsContainer.add(moonGroup);
 
             // Offset starting time so they are equal intervals
             // t goes from 0 to 1.
@@ -178,11 +182,23 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
         // Resize
         const handleResize = () => {
             if (!cameraRef.current || !rendererRef.current) return;
+
+            // Update aspect ratio
             cameraRef.current.aspect = window.innerWidth / window.innerHeight;
             cameraRef.current.updateProjectionMatrix();
             rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+
+            // Responsive Scaling for Mobile
+            const isMobile = window.innerWidth < 768;
+            const targetScale = isMobile ? 0.45 : 1; // Scale down further (45%) to narrow range on mobile
+            if (moonsContainer) {
+                moonsContainer.scale.set(targetScale, targetScale, targetScale);
+            }
         };
         window.addEventListener('resize', handleResize);
+
+        // Initial Call
+        handleResize();
 
         return () => {
             window.removeEventListener('resize', handleResize);
