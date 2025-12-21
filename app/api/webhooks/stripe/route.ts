@@ -4,14 +4,20 @@ import { Resend } from 'resend';
 
 // NOTE: You need to set STRIPE_WEBHOOK_SECRET in .env.local for security.
 // For now, checking signatures is best practice.
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-const resend = new Resend(process.env.RESEND_API_KEY);
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
+const resend = new Resend(process.env.RESEND_API_KEY || 're_123'); // Dummy key for build safety if missing
 
 export async function POST(req: NextRequest) {
     const body = await req.text();
     const sig = req.headers.get('stripe-signature') as string;
 
     let event: Stripe.Event;
+
+    if (!stripe) {
+        console.error("Stripe Secret Key is missing.");
+        return NextResponse.json({ error: 'System configuration error' }, { status: 500 });
+    }
 
     try {
         if (!process.env.STRIPE_WEBHOOK_SECRET) {
