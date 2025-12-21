@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+// Initialize Stripe safely
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const { name, email, company, industry, role, consultation, annualIncome, skills } = body;
+
+        if (!stripe) {
+            console.error("Stripe Secret Key is missing.");
+            return NextResponse.json({ error: 'System configuration error' }, { status: 500 });
+        }
 
         if (!process.env.STRIPE_PRICE_ID) {
             throw new Error('STRIPE_PRICE_ID is not defined');
