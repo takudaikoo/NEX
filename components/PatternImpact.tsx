@@ -22,7 +22,7 @@ interface Props {
 
 const PatternImpact: React.FC<Props> = ({ content }) => {
     return (
-        <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative">
+        <div className="min-h-screen bg-white text-black font-sans overflow-x-hidden relative">
 
             {/* Shared Background */}
             <ImpactThreeBackground />

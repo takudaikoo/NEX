@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ApplicationPage() {
     return (
-        <div className="relative min-h-screen bg-cyber-midnight text-white selection:bg-cyber-vermilion selection:text-white">
+        <div className="relative min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black">
             {/* Background */}
             <CyberThreeBackground />
 
@@ -19,7 +19,7 @@ export default function ApplicationPage() {
                     <h1 className="text-4xl md:text-5xl font-bold font-noto-sans text-white mb-4">
                         APPLICATION
                     </h1>
-                    <p className="text-white/60">オンライン動作解析 お申し込み</p>
+                    <p className="text-white/60">30分ハンズオンサポート お申込みフォーム</p>
                 </div>
 
                 <ApplicationForm />
@@ -27,7 +27,7 @@ export default function ApplicationPage() {
 
             {/* Footer */}
             <div className="relative z-10">
-                <Footer />
+                <Footer isApplicationPage={true} />
             </div>
         </div>
     );

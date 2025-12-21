@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
@@ -34,10 +35,10 @@ const HeroSection: React.FC = () => {
 
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6 animate-fade-in-up delay-300">
-                        <button className="px-8 py-4 bg-tech-cyan text-tech-navy rounded-full font-bold text-lg hover:bg-white hover:shadow-[0_0_30px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group">
+                        <Link href="/flow/demo" className="px-8 py-4 bg-tech-cyan text-tech-navy rounded-full font-bold text-lg hover:bg-white hover:shadow-[0_0_30px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group">
                             実装デモを見る
                             <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

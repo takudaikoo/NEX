@@ -5,7 +5,7 @@ import { Quote } from 'lucide-react';
 
 const VisionAuthoritySection: React.FC = () => {
     return (
-        <section className="py-24 px-6 bg-[#0B1026] text-white relative overflow-hidden">
+        <section className="py-24 px-6 bg-cyber-black text-white relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-cyber-midnight to-transparent opacity-50 z-0"></div>
 
@@ -31,7 +31,7 @@ const VisionAuthoritySection: React.FC = () => {
                                 </div>
                                 <div>
                                     <div className="text-xs text-gray-400 uppercase">Satisfaction</div>
-                                    <div className="text-2xl font-bold font-mono text-cyber-vermilion">99%</div>
+                                    <div className="text-2xl font-bold font-mono text-cyber-green">99%</div>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@ const VisionAuthoritySection: React.FC = () => {
 
                     {/* Vision Message */}
                     <div className="font-noto-serif">
-                        <Quote size={48} className="text-cyber-vermilion mb-8 opacity-50" />
+                        <Quote size={48} className="text-cyber-green mb-8 opacity-50" />
 
                         <h2 className="text-3xl md:text-4xl font-bold leading-relaxed mb-8">
                             「頑張っている人が、<br />

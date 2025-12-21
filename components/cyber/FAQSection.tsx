@@ -45,7 +45,7 @@ const FAQSection: React.FC = () => {
                             >
                                 <span>Q. {faq.q}</span>
                                 {openIndex === index ? (
-                                    <Minus size={20} className="text-cyber-vermilion min-w-[20px]" />
+                                    <Minus size={20} className="text-cyber-green min-w-[20px]" />
                                 ) : (
                                     <Plus size={20} className="text-gray-400 min-w-[20px]" />
                                 )}

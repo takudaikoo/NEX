@@ -1,22 +1,23 @@
-import React from 'react';
-import Footer from '@/components/cyber/Footer';
+import { FlowLegalFooter } from '@/components/flow/RemainingSections';
 
 export const metadata = {
-    title: '特定商取引法に基づく表記 | NEX',
+    title: '特定商取引法に基づく表記 | TechCurator',
     description: '特定商取引法に基づく表記',
 };
 
 export default function TokushoHoPage() {
     return (
-        <div className="min-h-screen bg-[#0B1026] text-white font-noto-sans selection:bg-cyber-vermilion selection:text-white pb-20">
+        <div className="min-h-screen bg-tech-navy text-white font-noto-sans selection:bg-tech-cyan selection:text-tech-navy pb-20">
             <header className="py-8 px-6 border-b border-white/10 mb-12">
                 <div className="container mx-auto">
-                    <h1 className="text-2xl font-bold">NEX</h1>
+                    <h1 className="text-2xl font-montserrat font-bold tracking-wide text-white">
+                        Tech<span className="text-tech-cyan">Curator</span>
+                    </h1>
                 </div>
             </header>
 
             <main className="container mx-auto px-6 max-w-4xl">
-                <h1 className="text-3xl md:text-4xl font-bold mb-12">特定商取引法に基づく表記</h1>
+                <h1 className="text-3xl md:text-4xl font-bold mb-12 text-white">特定商取引法に基づく表記</h1>
 
                 <div className="space-y-8">
                     {/* Item */}
@@ -88,12 +89,12 @@ export default function TokushoHoPage() {
                 </div>
 
                 <div className="mt-12">
-                    <a href="/cyber" className="text-tech-cyan hover:underline">
+                    <a href="/flow" className="text-tech-cyan hover:underline font-bold">
                         ← トップページへ戻る
                     </a>
                 </div>
             </main>
-            <Footer variant="simple" activePage="tokusho-ho" />
+            <FlowLegalFooter activePage="tokusho-ho" />
         </div>
     );
 }

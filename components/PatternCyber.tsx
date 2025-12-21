@@ -18,7 +18,7 @@ import { GeneratedContent } from '@/types';
 
 const PatternCyber: React.FC<{ content: GeneratedContent }> = ({ content }) => {
     return (
-        <div className="relative min-h-screen bg-cyber-midnight text-white selection:bg-cyber-vermilion selection:text-white overflow-hidden">
+        <div className="relative min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black overflow-hidden">
             {/* 3D Background */}
             <CyberThreeBackground />
 
@@ -44,7 +44,7 @@ const PatternCyber: React.FC<{ content: GeneratedContent }> = ({ content }) => {
 
             {/* Chat Widget Placeholder (Optional) */}
             <div className="fixed bottom-6 right-6 z-50">
-                <button className="bg-cyber-vermilion text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform">
+                <button className="bg-cyber-green text-black p-4 rounded-full shadow-lg hover:scale-110 transition-transform shadow-[0_0_20px_rgba(0,255,65,0.4)]">
                     <span className="font-bold text-xl">?</span>
                 </button>
             </div>
