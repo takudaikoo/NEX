@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Terminal, Key, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
 
 const OfferSection: React.FC = () => {
     const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 59, seconds: 59 });
@@ -96,16 +97,18 @@ const OfferSection: React.FC = () => {
                                         <Key size={32} className="mx-auto" />
                                     </div>
                                     <div className="text-3xl font-bold text-white mb-2 font-mono">
-                                        ¥4,980
+                                        ¥8,000
                                     </div>
                                     <div className="text-xs text-gray-400 mb-6 font-mono">
                                         TOKEN-ID: #8X-99<br />
                                         TYPE: SINGLE_SESSION
                                     </div>
 
-                                    <button className="w-full py-3 bg-cyber-vermilion hover:bg-red-600 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(227,66,52,0.4)]">
-                                        Execute Sequence
-                                    </button>
+                                    <Link href="/cyber/application" className="block w-full">
+                                        <button className="w-full py-3 bg-cyber-vermilion hover:bg-red-600 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(227,66,52,0.4)]">
+                                            Execute Sequence
+                                        </button>
+                                    </Link>
                                 </div>
                                 <div className="flex items-center gap-2 mt-4 text-[10px] text-gray-500 uppercase tracking-widest">
                                     <ShieldCheck size={12} />

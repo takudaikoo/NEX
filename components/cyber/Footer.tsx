@@ -1,7 +1,6 @@
-"use client";
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
     return (
@@ -37,7 +36,7 @@ const Footer: React.FC = () => {
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
                     <div className="font-mono">© 2024 NEX AI Solutions.</div>
                     <div className="flex gap-6">
-                        <a href="#" className="hover:text-white transition-colors">特定商取引法に基づく表記</a>
+                        <Link href="/legal/tokusho-ho" className="hover:text-white transition-colors">特定商取引法に基づく表記</Link>
                         <a href="#" className="hover:text-white transition-colors">プライバシーポリシー</a>
                     </div>
                 </div>
