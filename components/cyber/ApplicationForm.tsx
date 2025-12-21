@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = stripePublishableKey ? loadStripe(stripePublishableKey) : null;
 
 type FormData = {
     name: string;
@@ -59,6 +60,9 @@ const ApplicationForm: React.FC = () => {
                 if (!response.ok) throw new Error('Network response was not ok');
 
                 const { sessionId } = await response.json();
+                if (!stripePromise) {
+                    throw new Error('Stripe is not configured');
+                }
                 const stripe = await stripePromise;
 
                 if (!stripe) throw new Error('Stripe failed to load');
