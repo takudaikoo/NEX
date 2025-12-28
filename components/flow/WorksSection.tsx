@@ -24,7 +24,7 @@ const WorksSection: React.FC = () => {
                                     <Zap className="text-white/10 w-24 h-24" />
                                 </div>
                                 <div className="absolute bottom-4 left-4 bg-black/60 px-3 py-1 rounded text-white/50 text-xs border border-white/5">
-                                    Automation Demo
+                                    Dashboard Demo
                                 </div>
                             </div>
 
@@ -34,15 +34,15 @@ const WorksSection: React.FC = () => {
                                     <div className="inline-block px-3 py-1 bg-tech-cyan/10 text-tech-cyan rounded-full text-xs font-bold tracking-wider uppercase mb-4">
                                         Case 01
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white mb-6">契約・決済オートメーション</h3>
+                                    <h3 className="text-2xl font-bold text-white mb-6">管理ダッシュボード・Webシステム</h3>
 
                                     <div className="space-y-4">
                                         {/* Before */}
                                         <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
                                             <div className="text-red-400 font-bold text-sm pt-1">Before</div>
                                             <div className="text-white/70">
-                                                契約書作成・送付・入金確認に<br />
-                                                <span className="font-bold text-white">毎日 2時間</span> かかっていた
+                                                スクラッチ開発の見積もりが<br />
+                                                <span className="font-bold text-white">500万円・納期2ヶ月</span> で断念
                                             </div>
                                         </div>
 
@@ -56,16 +56,16 @@ const WorksSection: React.FC = () => {
                                         <div className="flex items-start gap-4 p-4 bg-tech-cyan/10 rounded-xl border border-tech-cyan/30">
                                             <div className="text-tech-cyan font-bold text-sm pt-1">After</div>
                                             <div className="text-white">
-                                                AIと自動化により<br />
-                                                <span className="font-bold text-tech-cyan text-lg">作業時間 0分</span> (完全自動化)
+                                                最新スタックの活用で<br />
+                                                <span className="font-bold text-tech-cyan text-lg">数値可視化まで 3日で実装</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-2 text-sm text-white/40 font-mono border-t border-white/10 pt-6">
-                                    <Code2 size={14} />
-                                    <span>Stripe / Airtable / Zapier</span>
+                                    <Database size={14} />
+                                    <span>Javascript / Google Cloud</span>
                                 </div>
                             </div>
 
@@ -123,7 +123,7 @@ const WorksSection: React.FC = () => {
                                     <Zap className="text-white/10 w-24 h-24" />
                                 </div>
                                 <div className="absolute bottom-4 left-4 bg-black/60 px-3 py-1 rounded text-white/50 text-xs border border-white/5">
-                                    Chatbot Demo
+                                    EC / Store Demo
                                 </div>
                             </div>
 

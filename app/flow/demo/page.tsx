@@ -77,12 +77,12 @@ export default function DemoPage() {
                         <h2 className="text-2xl font-bold border-l-4 border-tech-green pl-4">想定業務例</h2>
                         <div className="grid grid-cols-1 gap-4">
                             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
-                                <div className="p-2 bg-tech-cyan/10 rounded-lg text-tech-cyan"><Bot size={20} /></div>
-                                <span>問い合わせ対応の自動化</span>
+                                <div className="p-2 bg-tech-cyan/10 rounded-lg text-tech-cyan"><CheckCircle2 size={20} /></div>
+                                <span>ECサイトの短期間立ち上げ</span>
                             </div>
                             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
                                 <div className="p-2 bg-tech-purple/10 rounded-lg text-purple-400"><FileSpreadsheet size={20} /></div>
-                                <span>データ集計・レポート作成</span>
+                                <span>管理ダッシュボード・Webシステムの構築</span>
                             </div>
                             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
                                 <div className="p-2 bg-tech-green/10 rounded-lg text-tech-green"><Database size={20} /></div>

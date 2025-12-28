@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, PlayCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, PlayCircle, Play } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
     return (
@@ -21,7 +21,6 @@ const HeroSection: React.FC = () => {
                         {/* H2 */}
                         <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light">
                             中小企業・スタートアップ向け。<br />
-                            既存AI・ノーコードを組み合わせ、<br className="lg:hidden" />
                             低コストで業務改善を実現します。
                         </p>
                     </div>
@@ -55,8 +54,8 @@ const HeroSection: React.FC = () => {
                     {/* CTA (Mobile: Visible here, Desktop: Visible here) - Order handled by flex-col on mobile */}
                     <div className="pt-4">
                         <Link href="/flow/demo" className="w-full lg:w-auto px-8 py-4 bg-tech-cyan text-tech-navy rounded-full font-bold text-lg hover:bg-white hover:shadow-[0_0_30px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-tech-cyan/20">
-                            無料相談を予約する
-                            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            デモ動画の詳細を確認する
+                            <Play className="group-hover:scale-110 transition-transform" size={20} />
                         </Link>
                     </div>
                 </div>
