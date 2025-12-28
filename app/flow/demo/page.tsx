@@ -156,13 +156,13 @@ export default function DemoPage() {
                         セキュリティ・権限設計を考慮した実装が可能です。
                     </p>
 
-                    <a
-                        href="mailto:info@nex-s.jp"
+                    <Link
+                        href="/flow/consultation"
                         className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 transition-all hover:scale-105"
                     >
                         <span>自社業務で実現できるか相談する</span>
                         <ArrowRight size={18} />
-                    </a>
+                    </Link>
                 </div>
 
             </main>
