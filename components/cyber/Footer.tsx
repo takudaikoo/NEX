@@ -63,7 +63,7 @@ const Footer: React.FC<FooterProps> = ({ isApplicationPage = false, variant = 'd
                     <div className="font-mono">© 2024 NEX AI Solutions.</div>
                     <div className="flex gap-6">
                         {activePage !== 'tokusho-ho' && (
-                            <Link href="/legal/tokusho-ho" className="hover:text-cyber-green transition-colors">特定商取引法に基づく表記</Link>
+                            <Link href="/cyber/legal/tokusho-ho" className="hover:text-cyber-green transition-colors">特定商取引法に基づく表記</Link>
                         )}
                         {activePage !== 'privacy' && (
                             <Link href="/cyber/legal/privacy" className="hover:text-cyber-green transition-colors">プライバシーポリシー</Link>
