@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
-import { ArrowDown, Code2, Database, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowDown, Code2, Database, Zap, MessageSquare } from 'lucide-react';
 
 const WorksSection: React.FC = () => {
     return (
@@ -82,15 +82,15 @@ const WorksSection: React.FC = () => {
                                     <div className="inline-block px-3 py-1 bg-tech-cyan/10 text-tech-cyan rounded-full text-xs font-bold tracking-wider uppercase mb-4">
                                         Case 02
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white mb-6">顧客対応・FAQボット</h3>
+                                    <h3 className="text-2xl font-bold text-white mb-6">ECサイト・決済基盤の実装</h3>
 
                                     <div className="space-y-4">
                                         {/* Before */}
                                         <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
                                             <div className="text-red-400 font-bold text-sm pt-1">Before</div>
                                             <div className="text-white/70">
-                                                同じような質問への回答作成に<br />
-                                                <span className="font-bold text-white">月間 30時間</span> 費やしていた
+                                                外注見積もり<br />
+                                                <span className="font-bold text-white">300万円・納期3ヶ月</span> と言われた
                                             </div>
                                         </div>
 
@@ -104,8 +104,8 @@ const WorksSection: React.FC = () => {
                                         <div className="flex items-start gap-4 p-4 bg-tech-cyan/10 rounded-xl border border-tech-cyan/30">
                                             <div className="text-tech-cyan font-bold text-sm pt-1">After</div>
                                             <div className="text-white">
-                                                AIボットの導入により<br />
-                                                <span className="font-bold text-tech-cyan text-lg">対応工数 90% 削減</span>
+                                                Shopifyの活用により<br />
+                                                <span className="font-bold text-tech-cyan text-lg">制作費 10万円・納期1週間</span> でローンチ
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ const WorksSection: React.FC = () => {
 
                                 <div className="flex items-center gap-2 text-sm text-white/40 font-mono border-t border-white/10 pt-6">
                                     <Database size={14} />
-                                    <span>Dify / Notion API / LINE</span>
+                                    <span>Commerce Platform / Payment API</span>
                                 </div>
                             </div>
 
@@ -128,6 +128,22 @@ const WorksSection: React.FC = () => {
                             </div>
 
                         </div>
+                    </div>
+
+                    {/* Disclaimer / Note */}
+                    <div className="text-center text-white/40 text-sm mt-12">
+                        ※ 上記は一例です。課題に合わせて最適な組み合わせを提案します。
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="flex justify-center mt-12">
+                        <Link
+                            href="/flow/consultation"
+                            className="inline-flex items-center justify-center px-12 py-5 bg-white/5 text-white rounded-full font-bold text-lg hover:bg-white/10 border border-tech-cyan/30 hover:border-tech-cyan hover:shadow-[0_0_30px_rgba(0,243,255,0.2)] transition-all duration-300 gap-3"
+                        >
+                            無料相談はこちら
+                            <MessageSquare size={20} />
+                        </Link>
                     </div>
 
                 </div>
