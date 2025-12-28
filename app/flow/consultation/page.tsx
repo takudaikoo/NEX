@@ -12,10 +12,38 @@ export default function ConsultationPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        // Mock API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setIsLoading(false);
-        setIsSubmitted(true);
+
+        // Collect form data safely
+        const target = e.target as typeof e.target & {
+            name: { value: string };
+            company: { value: string };
+            email: { value: string };
+            consultation: { value: string };
+        };
+
+        const payload = {
+            name: target.name.value,
+            company: target.company.value,
+            email: target.email.value,
+            consultation: target.consultation.value,
+        };
+
+        try {
+            const res = await fetch('/api/flow/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) throw new Error('Failed to send');
+
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error(error);
+            alert('送信に失敗しました。時間をおいて再度お試しください。');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     if (isSubmitted) {
@@ -99,22 +127,22 @@ export default function ConsultationPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-white/80">お名前 <span className="text-tech-vermilion">*</span></label>
-                            <input type="text" required className="w-full bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors" placeholder="山田 太郎" />
+                            <input name="name" type="text" required className="w-full bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors" placeholder="山田 太郎" />
                         </div>
 
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-white/80">会社名 <span className="text-tech-vermilion">*</span></label>
-                            <input type="text" required className="w-full bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors" placeholder="御社名" />
+                            <input name="company" type="text" required className="w-full bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors" placeholder="御社名" />
                         </div>
 
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-white/80">メールアドレス <span className="text-tech-vermilion">*</span></label>
-                            <input type="email" required className="w-full bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors" placeholder="example@company.com" />
+                            <input name="email" type="email" required className="w-full bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors" placeholder="example@company.com" />
                         </div>
 
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-white/80">ご相談内容 (任意)</label>
-                            <textarea className="w-full h-32 bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors resize-none" placeholder="例：経理業務の自動化に興味がある、まずは事例を知りたい 等"></textarea>
+                            <textarea name="consultation" className="w-full h-32 bg-black/50 border border-white/20 rounded-lg p-3 focus:border-tech-cyan outline-none transition-colors resize-none" placeholder="例：経理業務の自動化に興味がある、まずは事例を知りたい 等"></textarea>
                         </div>
 
                         <button
