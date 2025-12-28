@@ -48,11 +48,34 @@ const HeroSection: React.FC = () => {
                 {/* In a real scenario, we'd place a transparent PNG here. 
                     For now, use CSS to suggest it or rely on background atmosphere. 
                     Or use a placeholder div that mimics a "Scanner" overlay. */}
-                <div className="mt-16 relative w-64 h-64 mx-auto opacity-50 hidden md:block">
+                {/* Visual Placeholder (Runner Silhouette) */}
+                <div className="mt-16 relative w-64 h-64 mx-auto hidden md:block group">
+                    {/* Ring */}
                     <div className="absolute inset-0 border border-impact-red/20 rounded-full animate-spin-slow border-t-impact-red"></div>
                     <div className="absolute inset-4 border border-impact-red/10 rounded-full animate-spin-slow animation-delay-150 border-r-impact-red"></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-impact-red/10">
-                        [ RUNNER_SILHOUETTE ]
+
+                    {/* Motion Skeleton (CSS Stick Figure) */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-40">
+                        {/* Head */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-gray-900 rounded-full"></div>
+                        {/* Spine */}
+                        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-1 h-16 bg-gray-900 origin-top rotate-12"></div>
+                        {/* Arm L */}
+                        <div className="absolute top-8 left-1/2 w-1 h-12 bg-gray-900 origin-top -rotate-45"></div>
+                        {/* Arm R */}
+                        <div className="absolute top-8 left-1/2 w-1 h-12 bg-gray-900 origin-top rotate-[60deg]"></div>
+                        {/* Leg L */}
+                        <div className="absolute top-20 left-1/2 w-1 h-16 bg-gray-900 origin-top rotate-12"></div>
+                        {/* Leg R (Running) */}
+                        <div className="absolute top-20 left-1/2 w-1 h-16 bg-impact-red origin-top -rotate-45 relative">
+                            {/* Highlight Joint */}
+                            <div className="absolute bottom-0 -left-1 w-3 h-3 bg-impact-red rounded-full shadow-[0_0_10px_red] animate-ping"></div>
+                        </div>
+                    </div>
+
+                    <div className="absolute bottom-10 right-10 flex flex-col items-end">
+                        <div className="text-xs font-mono text-gray-400">JOINT ANGLE</div>
+                        <div className="text-lg font-bold text-impact-red font-mono">142° <span className="text-xs text-gray-400">(-3°)</span></div>
                     </div>
                 </div>
 
