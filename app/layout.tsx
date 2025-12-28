@@ -21,8 +21,8 @@ const notoSerifJP = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-    title: "Tech Curator | XADS",
-    description: "Architect, not Mason. Tech Curator Official LP.",
+    title: "NXS | 人・技術・身体をつなぎ、実装する",
+    description: "NXS（NEXUS）は、AI・テクノロジー・身体知を横断し、「使える」「変わる」「結果が出る」状態まで落とし込む実装カンパニーです。",
 };
 
 export default function RootLayout({
