@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function TokushoHoPage() {
     return (
-        <div className="min-h-screen bg-tech-navy text-white font-noto-sans selection:bg-tech-cyan selection:text-tech-navy flex flex-col">
+        <div className="min-h-screen bg-black text-white font-noto-sans selection:bg-tech-cyan selection:text-black flex flex-col">
             <header className="py-8 px-6 border-b border-white/10">
                 <div className="container mx-auto flex justify-between items-center">
                     <Link href="/" className="text-2xl font-bold tracking-widest hover:text-tech-cyan transition-colors">
