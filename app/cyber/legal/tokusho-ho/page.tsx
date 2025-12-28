@@ -25,7 +25,7 @@ export default function TokushoHoPage() {
                     {/* Items */}
                     <div className="border-b border-white/5 pb-8 grid md:grid-cols-[200px_1fr] gap-4 group hover:border-cyber-green/30 transition-colors">
                         <div className="font-bold text-gray-400 group-hover:text-cyber-green transition-colors">販売事業者名</div>
-                        <div>株式会社XADS</div>
+                        <div>株式会社NXS</div>
                     </div>
 
                     <div className="border-b border-white/5 pb-8 grid md:grid-cols-[200px_1fr] gap-4 group hover:border-cyber-green/30 transition-colors">

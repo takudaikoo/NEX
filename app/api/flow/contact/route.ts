@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
                     <h2>お申し込みありがとうございます</h2>
                     <p>${name} 様</p>
                     <p>
-                        株式会社XADS / NEX事業部でございます。<br>
+                        株式会社NXS / NEX事業部でございます。<br>
                         この度は、業務自動化に関する無料相談にお申し込みいただき、誠にありがとうございます。
                     </p>
                     
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
                     <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
                     
                     <p style="font-size: 12px; color: #888;">
-                        <strong>株式会社XADS</strong><br>
+                        <strong>株式会社NXS</strong><br>
                         NEX Innovation Team<br>
                         東京都荒川区荒川<br>
                         <a href="https://bbox-nex.vercel.app">https://bbox-nex.vercel.app</a>

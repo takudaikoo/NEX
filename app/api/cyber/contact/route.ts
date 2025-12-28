@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
                     <strong>支店名:</strong> 福井支店<br>
                     <strong>口座種別:</strong> 普通<br>
                     <strong>口座番号:</strong> 0691873<br>
-                    <strong>口座名義:</strong> カ）エックスエーディーエス
+                    <strong>口座名義:</strong> カ）エヌエックスエス
                 </p>
                 <p><strong>金額: 5,000円 (税込)</strong></p>
                 <p style="font-size: 12px;">※恐れ入りますが振込手数料はご負担をお願いいたします。</p>
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
                     <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
                     
                     <p style="font-size: 12px; color: #888;">
-                        <strong>株式会社XADS</strong><br>
+                        <strong>株式会社NXS</strong><br>
                         Cyber Analysis Team
                     </p>
                 </div>

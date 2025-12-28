@@ -23,7 +23,7 @@ export default function TokushoHoPage() {
                     {/* Item */}
                     <div className="border-b border-white/10 pb-8 grid md:grid-cols-[200px_1fr] gap-4">
                         <div className="font-bold text-white/60">販売事業者名</div>
-                        <div>株式会社XADS</div>
+                        <div>株式会社NXS</div>
                     </div>
 
                     <div className="border-b border-white/10 pb-8 grid md:grid-cols-[200px_1fr] gap-4">

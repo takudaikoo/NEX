@@ -11,7 +11,11 @@ export default function BrandFooter() {
             <p className="text-sm text-white/40">
                 NEXUS ｜ 人・技術・身体をつなぐ実装カンパニー
             </p>
-            <p className="text-xs text-white/20 mt-8 font-mono">
+            <div className="flex justify-center gap-6 mt-6 mb-4 text-xs text-white/40">
+                <a href="/legal/tokusho-ho" className="hover:text-white transition-colors">特定商取引法に基づく表記</a>
+                <a href="/legal/privacy" className="hover:text-white transition-colors">プライバシーポリシー</a>
+            </div>
+            <p className="text-xs text-white/20 mt-4 font-mono">
                 © 2025 NXS. All Rights Reserved.
             </p>
         </footer>
