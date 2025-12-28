@@ -19,11 +19,51 @@ const WorksSection: React.FC = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                             {/* Visual / Demo Placeholder */}
-                            <div className="relative h-[300px] lg:h-[360px] bg-black rounded-2xl border border-white/10 overflow-hidden group">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Zap className="text-white/10 w-24 h-24" />
+                            {/* Visual / Demo Placeholder - Dashboard Wireframe */}
+                            <div className="relative h-[300px] lg:h-[360px] bg-[#0A0F1C] rounded-2xl border border-white/10 overflow-hidden group shadow-2xl">
+                                {/* Window UI */}
+                                <div className="absolute top-0 w-full h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                                 </div>
-                                <div className="absolute bottom-4 left-4 bg-black/60 px-3 py-1 rounded text-white/50 text-xs border border-white/5">
+                                {/* Dashboard Layout */}
+                                <div className="absolute top-8 inset-0 flex">
+                                    {/* Sidebar */}
+                                    <div className="w-16 md:w-48 border-r border-white/10 p-4 space-y-4">
+                                        <div className="h-4 w-20 bg-white/10 rounded mb-6"></div>
+                                        <div className="h-3 w-full bg-white/5 rounded"></div>
+                                        <div className="h-3 w-3/4 bg-white/5 rounded"></div>
+                                        <div className="h-3 w-5/6 bg-white/5 rounded"></div>
+                                        <div className="h-3 w-full bg-white/5 rounded"></div>
+                                    </div>
+                                    {/* Content */}
+                                    <div className="flex-1 p-6 space-y-6 bg-black/20">
+                                        <div className="flex justify-between items-center">
+                                            <div className="h-6 w-32 bg-white/20 rounded"></div>
+                                            <div className="h-8 w-24 bg-tech-cyan/20 rounded"></div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="h-32 bg-white/5 rounded border border-white/5 p-4">
+                                                <div className="h-4 w-12 bg-white/10 rounded mb-4"></div>
+                                                <div className="h-8 w-20 bg-white/20 rounded"></div>
+                                            </div>
+                                            <div className="h-32 bg-white/5 rounded border border-white/5 p-4">
+                                                <div className="h-4 w-12 bg-white/10 rounded mb-4"></div>
+                                                <div className="h-8 w-20 bg-tech-cyan/20 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div className="h-32 bg-white/5 rounded border border-white/5 p-4 flex gap-4 items-end">
+                                            <div className="h-12 w-8 bg-white/10 rounded-t"></div>
+                                            <div className="h-20 w-8 bg-tech-cyan/30 rounded-t"></div>
+                                            <div className="h-16 w-8 bg-white/10 rounded-t"></div>
+                                            <div className="h-24 w-8 bg-tech-cyan/50 rounded-t"></div>
+                                            <div className="h-10 w-8 bg-white/10 rounded-t"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Label */}
+                                <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-white/50 text-xs border border-white/5">
                                     Dashboard Demo
                                 </div>
                             </div>
@@ -118,12 +158,46 @@ const WorksSection: React.FC = () => {
                             </div>
 
                             {/* Visual / Demo Placeholder */}
-                            <div className="relative h-[300px] lg:h-[360px] bg-black rounded-2xl border border-white/10 overflow-hidden group order-1 lg:order-2">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Zap className="text-white/10 w-24 h-24" />
+                            {/* Visual / Demo Placeholder - EC Site Wireframe */}
+                            <div className="relative h-[300px] lg:h-[360px] bg-[#0A0F1C] rounded-2xl border border-white/10 overflow-hidden group shadow-2xl order-1 lg:order-2">
+                                {/* Window UI */}
+                                <div className="absolute top-0 w-full h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                                 </div>
-                                <div className="absolute bottom-4 left-4 bg-black/60 px-3 py-1 rounded text-white/50 text-xs border border-white/5">
-                                    EC / Store Demo
+                                {/* EC Layout */}
+                                <div className="absolute top-8 inset-0 overflow-hidden">
+                                    {/* Nav */}
+                                    <div className="h-12 border-b border-white/10 flex items-center justify-between px-6">
+                                        <div className="h-4 w-24 bg-white/20 rounded"></div>
+                                        <div className="flex gap-4">
+                                            <div className="h-4 w-12 bg-white/5 rounded"></div>
+                                            <div className="h-4 w-12 bg-white/5 rounded"></div>
+                                            <div className="h-4 w-4 bg-tech-cyan/50 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    {/* Hero */}
+                                    <div className="h-32 bg-gradient-to-r from-tech-cyan/10 to-transparent flex items-center px-6">
+                                        <div className="space-y-2">
+                                            <div className="h-6 w-48 bg-white/20 rounded"></div>
+                                            <div className="h-3 w-32 bg-white/10 rounded"></div>
+                                        </div>
+                                    </div>
+                                    {/* Products */}
+                                    <div className="p-6 grid grid-cols-3 gap-4">
+                                        {[1, 2, 3].map((i) => (
+                                            <div key={i} className="space-y-2">
+                                                <div className="h-24 bg-white/5 rounded-lg border border-white/5"></div>
+                                                <div className="h-3 w-20 bg-white/10 rounded"></div>
+                                                <div className="h-3 w-12 bg-white/5 rounded"></div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                {/* Label */}
+                                <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-white/50 text-xs border border-white/5">
+                                    EC Store Demo
                                 </div>
                             </div>
 
