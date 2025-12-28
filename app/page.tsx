@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import HubThreeScene from '@/components/hub/HubThreeScene';
-import BrandHero from '@/components/brand/BrandHero';
-import BrandAbout from '@/components/brand/BrandAbout';
-import BrandPhilosophy from '@/components/brand/BrandPhilosophy';
 import BrandServices from '@/components/brand/BrandServices';
+import BrandMessage from '@/components/brand/BrandMessage';
+import BrandPhilosophy from '@/components/brand/BrandPhilosophy';
 import BrandFooter from '@/components/brand/BrandFooter';
 
 export default function Home() {
@@ -20,7 +19,7 @@ export default function Home() {
             </div>
 
             {/* Scrollable Content Wrapper */}
-            <div className="relative z-10 w-full overflow-x-hidden">
+            <div className="relative z-10 w-full overflow-x-hidden pt-20">
 
                 {/* Header / Nav (Brand) */}
                 <header className="fixed top-0 left-0 w-full p-6 md:p-8 z-50 flex justify-between items-center pointer-events-none mix-blend-difference">
@@ -28,10 +27,18 @@ export default function Home() {
                     <div className="text-xs text-white/50 font-mono hidden md:block">INTERFACE PROTOCOL</div>
                 </header>
 
-                <BrandHero />
-                <BrandAbout />
+                {/* 1. Services (Now at Top) */}
+                <div className="pt-10 md:pt-20">
+                    <BrandServices setHoverState={setHoverState} />
+                </div>
+
+                {/* 2. Message (Hero + About content merged) */}
+                <BrandMessage />
+
+                {/* 3. Philosophy */}
                 <BrandPhilosophy />
-                <BrandServices setHoverState={setHoverState} />
+
+                {/* 4. Footer */}
                 <BrandFooter />
 
             </div>
