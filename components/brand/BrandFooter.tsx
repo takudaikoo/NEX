@@ -12,6 +12,7 @@ export default function BrandFooter() {
                 NEXUS ｜ 人・技術・身体をつなぐ実装カンパニー
             </p>
             <div className="flex justify-center gap-6 mt-6 mb-4 text-xs text-white/40">
+                <a href="/contact" className="hover:text-white transition-colors">お問い合わせ</a>
                 <a href="/legal/tokusho-ho" className="hover:text-white transition-colors">特定商取引法に基づく表記</a>
                 <a href="/legal/privacy" className="hover:text-white transition-colors">プライバシーポリシー</a>
             </div>

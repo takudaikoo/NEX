@@ -40,7 +40,7 @@ export default function BrandMessage() {
                 {/* CTA */}
                 <div className="flex justify-center">
                     <a
-                        href="mailto:info@nex-s.jp"
+                        href="/contact"
                         className="group relative px-10 py-5 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
                     >
                         <span className="relative z-10 flex items-center gap-3">
