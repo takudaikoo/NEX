@@ -1,9 +1,48 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 export default function BrandPhilosophy() {
+    const [activeStep, setActiveStep] = useState<'think' | 'build' | 'perform' | null>(null);
+
+    const thinkRef = useRef<HTMLDivElement>(null);
+    const buildRef = useRef<HTMLDivElement>(null);
+    const performRef = useRef<HTMLDivElement>(null);
+
+    // Mobile Scroll Detection
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -20% 0px',
+            threshold: 0.6,
+        };
+
+        const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target === thinkRef.current) {
+                        setActiveStep('think');
+                    } else if (entry.target === buildRef.current) {
+                        setActiveStep('build');
+                    } else if (entry.target === performRef.current) {
+                        setActiveStep('perform');
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        if (thinkRef.current) observer.observe(thinkRef.current);
+        if (buildRef.current) observer.observe(buildRef.current);
+        if (performRef.current) observer.observe(performRef.current);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
     return (
         <section className="relative w-full py-24 px-6 md:px-12 bg-gradient-to-b from-black/80 to-black z-10">
             <div className="max-w-6xl mx-auto">
@@ -14,8 +53,17 @@ export default function BrandPhilosophy() {
                 <div className="grid md:grid-cols-3 gap-8">
 
                     {/* Think */}
-                    <div className="relative group p-8 border border-white/10 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors">
-                        <div className="text-5xl font-bold text-white/10 absolute top-4 right-6 group-hover:text-white/20 transition-colors">01</div>
+                    <div
+                        ref={thinkRef}
+                        className={`relative group p-8 border rounded-2xl transition-all duration-500
+                            ${activeStep === 'think'
+                                ? 'border-white/40 bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+                                : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                    >
+                        <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
+                            ${activeStep === 'think' ? 'text-white/30' : 'text-white/10 group-hover:text-white/20'}`}>
+                            01
+                        </div>
                         <h3 className="text-3xl font-bold text-white mb-4">Think</h3>
                         <p className="text-sm font-mono text-white/40 mb-6">構想・理解・設計</p>
                         <p className="text-white/70 leading-relaxed">
@@ -31,9 +79,21 @@ export default function BrandPhilosophy() {
                     </div>
 
                     {/* Build */}
-                    <div className="relative group p-8 border border-white/10 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors">
-                        <div className="text-5xl font-bold text-white/10 absolute top-4 right-6 group-hover:text-white/20 transition-colors">02</div>
-                        <h3 className="text-3xl font-bold text-white mb-4 text-tech-cyan">Build</h3>
+                    <div
+                        ref={buildRef}
+                        className={`relative group p-8 border rounded-2xl transition-all duration-500
+                            ${activeStep === 'build'
+                                ? 'border-tech-cyan bg-tech-cyan/10 shadow-[0_0_30px_rgba(0,255,255,0.1)]'
+                                : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                    >
+                        <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
+                            ${activeStep === 'build' ? 'text-tech-cyan/30' : 'text-white/10 group-hover:text-white/20'}`}>
+                            02
+                        </div>
+                        <h3 className={`text-3xl font-bold mb-4 transition-colors duration-500
+                            ${activeStep === 'build' ? 'text-tech-cyan' : 'text-white'}`}>
+                            Build
+                        </h3>
                         <p className="text-sm font-mono text-white/40 mb-6">実装・仕組み化・習得</p>
                         <p className="text-white/70 leading-relaxed">
                             絵に描いた餅にしない。<br />
@@ -48,9 +108,21 @@ export default function BrandPhilosophy() {
                     </div>
 
                     {/* Perform */}
-                    <div className="relative group p-8 border border-white/10 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors">
-                        <div className="text-5xl font-bold text-white/10 absolute top-4 right-6 group-hover:text-white/20 transition-colors">03</div>
-                        <h3 className="text-3xl font-bold text-white mb-4 text-impact-red">Perform</h3>
+                    <div
+                        ref={performRef}
+                        className={`relative group p-8 border rounded-2xl transition-all duration-500
+                            ${activeStep === 'perform'
+                                ? 'border-impact-red bg-impact-red/10 shadow-[0_0_30px_rgba(255,46,46,0.1)]'
+                                : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                    >
+                        <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
+                            ${activeStep === 'perform' ? 'text-impact-red/30' : 'text-white/10 group-hover:text-white/20'}`}>
+                            03
+                        </div>
+                        <h3 className={`text-3xl font-bold mb-4 transition-colors duration-500
+                            ${activeStep === 'perform' ? 'text-impact-red' : 'text-white'}`}>
+                            Perform
+                        </h3>
                         <p className="text-sm font-mono text-white/40 mb-6">成果・再現性・継続</p>
                         <p className="text-white/70 leading-relaxed">
                             一度きりでは意味がない。<br />
