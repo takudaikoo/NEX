@@ -72,7 +72,7 @@ export default function BrandServices({ setHoverState }: Props) {
     };
 
     return (
-        <section id="brand-services" className="relative w-full py-24 pb-48 z-10 px-4 md:px-8">
+        <section id="brand-services" className="relative w-full pt-12 pb-48 md:py-24 z-10 px-4 md:px-8">
             <h2 className="text-xl md:text-2xl font-bold font-sans text-center text-white mb-16 tracking-widest uppercase opacity-70">
                 OUR DOMAINS
             </h2>

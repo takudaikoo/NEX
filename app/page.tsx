@@ -19,7 +19,7 @@ export default function Home() {
             </div>
 
             {/* Scrollable Content Wrapper */}
-            <div className="relative z-10 w-full overflow-x-hidden pt-20">
+            <div className="relative z-10 w-full overflow-x-hidden">
 
                 {/* Header / Nav (Brand) */}
                 <header className="fixed top-0 left-0 w-full p-6 md:p-8 z-50 flex justify-between items-center pointer-events-none mix-blend-difference">
