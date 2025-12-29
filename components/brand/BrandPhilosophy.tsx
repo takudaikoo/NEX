@@ -133,10 +133,20 @@ export default function BrandPhilosophy() {
 
                 </div>
 
-                <div className="text-center mt-12 bg-gradient-to-r from-transparent via-white/5 to-transparent p-6 rounded-xl">
+                <div className="text-center mt-12 bg-gradient-to-r from-transparent via-white/5 to-transparent p-6 rounded-xl flex flex-col items-center gap-6">
                     <p className="text-xl text-white font-bold">
                         NXSは、この3つを分断せず、一気通貫で扱います。
                     </p>
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-tech-cyan hover:text-black transition-all duration-300"
+                    >
+                        事業詳細を見る <ArrowRight size={18} />
+                    </a>
                 </div>
             </div>
         </section>
