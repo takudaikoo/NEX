@@ -18,8 +18,18 @@ type FormData = {
     paymentMethod: 'stripe' | 'transfer';
 };
 
+import { useSearchParams } from 'next/navigation';
+
+// ... (existing imports)
+
 const ApplicationForm: React.FC = () => {
+    const searchParams = useSearchParams();
+    const startTimeParam = searchParams.get('start_time');
+    const serviceIdParam = searchParams.get('service_id');
+    const serviceNameParam = searchParams.get('service_name');
+
     const [formData, setFormData] = useState<FormData>({
+        // ... (existing defaults)
         name: '',
         email: '',
         sport: '',
@@ -29,10 +39,12 @@ const ApplicationForm: React.FC = () => {
         goals: '',
         paymentMethod: 'stripe',
     });
+    // ... (existing state)
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
 
+    // ... (handleChange, handleRadioChange)
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -48,6 +60,35 @@ const ApplicationForm: React.FC = () => {
         setError(null);
 
         try {
+            // BOOKING FLOW (if start_time is present)
+            if (startTimeParam && serviceIdParam) {
+                // Use Booking API
+                const response = await fetch('/api/booking/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        serviceId: serviceIdParam,
+                        serviceName: serviceNameParam || '予約サービス',
+                        price: searchParams.get('price') ? parseInt(searchParams.get('price')!) : 5000,
+                        customerName: formData.name,
+                        customerEmail: formData.email,
+                        notes: `${formData.consultation}\n${formData.goals}\nSport: ${formData.sport}`,
+                        startTime: startTimeParam
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Booking failed');
+                const data = await response.json();
+
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    setSuccess(true);
+                }
+                return;
+            }
+
+            // ORIGINAL FLOW
             if (formData.paymentMethod === 'stripe') {
                 const response = await fetch('/api/create-checkout-session', {
                     method: 'POST',

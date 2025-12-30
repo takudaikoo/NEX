@@ -3,10 +3,16 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, Send, CheckCircle, Video, Loader2 } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 export default function ConsultationPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    const searchParams = useSearchParams();
+    const startTimeParam = searchParams.get('start_time');
+    const serviceIdParam = searchParams.get('service_id');
+    const serviceNameParam = searchParams.get('service_name');
 
     // This would ideally connect to an API, using timeout for mock
     const handleSubmit = async (e: React.FormEvent) => {
@@ -29,6 +35,34 @@ export default function ConsultationPage() {
         };
 
         try {
+            // BOOKING FLOW (if start_time is present)
+            if (startTimeParam && serviceIdParam) {
+                const response = await fetch('/api/booking/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        serviceId: serviceIdParam,
+                        serviceName: serviceNameParam || '予約サービス',
+                        price: searchParams.get('price') ? parseInt(searchParams.get('price')!) : 0,
+                        customerName: payload.name,
+                        customerEmail: payload.email,
+                        notes: `${payload.consultation}\nCompany: ${payload.company}`,
+                        startTime: startTimeParam
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Booking failed');
+                // For free bookings, data.url might be null/undefined, meaning success.
+                // Assuming create-checkout returns { success: true } or similar for free.
+                const data = await response.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    setIsSubmitted(true);
+                }
+                return;
+            }
+
             const res = await fetch('/api/flow/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

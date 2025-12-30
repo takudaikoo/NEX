@@ -19,6 +19,8 @@ type FormData = {
     paymentMethod: 'stripe' | 'transfer';
 };
 
+import { useSearchParams } from 'next/navigation';
+
 const ApplicationForm: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
@@ -44,12 +46,49 @@ const ApplicationForm: React.FC = () => {
         setFormData(prev => ({ ...prev, paymentMethod: value }));
     };
 
+    const searchParams = useSearchParams();
+    const startTimeParam = searchParams.get('start_time');
+    const serviceIdParam = searchParams.get('service_id');
+    const serviceNameParam = searchParams.get('service_name');
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError(null);
 
         try {
+            // BOOKING FLOW (if start_time is present)
+            if (startTimeParam && serviceIdParam) {
+                const response = await fetch('/api/booking/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        serviceId: serviceIdParam,
+                        serviceName: serviceNameParam || '予約サービス',
+                        price: searchParams.get('price') ? parseInt(searchParams.get('price')!) : 0, // 0 for free consultation if not specified? Or fetch?
+                        // Cyber "Hands-on" is 0 yen in current SQL.
+                        // Flow is 0 yen.
+                        // If price is 0, we might skip stripe checkout?
+                        // The booking API handles price=0?
+                        // Let's assume standard flow for now.
+                        customerName: formData.name,
+                        customerEmail: formData.email,
+                        notes: `${formData.consultation}\n${formData.skills}\nCompany: ${formData.company}`,
+                        startTime: startTimeParam
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Booking failed');
+                const data = await response.json();
+
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    setSuccess(true);
+                }
+                return;
+            }
+
             if (formData.paymentMethod === 'stripe') {
                 const response = await fetch('/api/create-checkout-session', {
                     method: 'POST',

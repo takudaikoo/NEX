@@ -104,7 +104,7 @@ const OfferSection: React.FC = () => {
                                         TYPE: SINGLE_SESSION
                                     </div>
 
-                                    <Link href="/cyber/application" className="w-full py-3 bg-cyber-green hover:bg-emerald-400 text-black font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(0,255,65,0.4)] block">
+                                    <Link href="/cyber/reserve" className="w-full py-3 bg-cyber-green hover:bg-emerald-400 text-black font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(0,255,65,0.4)] block">
                                         Execute Sequence
                                     </Link>
                                 </div>

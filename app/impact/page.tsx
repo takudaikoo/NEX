@@ -53,7 +53,7 @@ export default function Page() {
                         自身の身体条件や動作の前提を整理し、<br />
                         今後の競技や日常動作をどう捉え、どう向き合うかを考えるための時間です。
                     </p>
-                    <Link href="/impact/application" className="inline-flex items-center gap-3 px-10 py-5 bg-white text-impact-red font-bold text-xl rounded-full hover:bg-black hover:text-white transition-all duration-300 shadow-xl">
+                    <Link href="/impact/reserve" className="inline-flex items-center gap-3 px-10 py-5 bg-white text-impact-red font-bold text-xl rounded-full hover:bg-black hover:text-white transition-all duration-300 shadow-xl">
                         体験セッションを予約する
                         <ArrowRight size={24} />
                     </Link>

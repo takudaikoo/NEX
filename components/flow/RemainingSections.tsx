@@ -163,7 +163,7 @@ export const FooterCTA = () => (
                 あなたのビジネスを進化させましょう。
             </h2>
 
-            <Link href="/flow/consultation" className="px-12 py-6 bg-tech-cyan text-tech-navy rounded-full font-bold text-xl hover:bg-white hover:scale-105 hover:shadow-[0_0_50px_rgba(0,243,255,0.6)] transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-[0_0_20px_rgba(0,243,255,0.3)] w-fit">
+            <Link href="/flow/reserve" className="px-12 py-6 bg-tech-cyan text-tech-navy rounded-full font-bold text-xl hover:bg-white hover:scale-105 hover:shadow-[0_0_50px_rgba(0,243,255,0.6)] transition-all duration-300 flex items-center justify-center gap-3 mx-auto shadow-[0_0_20px_rgba(0,243,255,0.3)] w-fit">
                 無料相談とデモ制作依頼はこちら
                 <MessageSquare />
             </Link>

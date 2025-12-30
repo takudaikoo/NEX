@@ -212,7 +212,7 @@ const WorksSection: React.FC = () => {
                     {/* CTA Button */}
                     <div className="flex justify-center mt-12">
                         <Link
-                            href="/flow/consultation"
+                            href="/flow/reserve"
                             className="inline-flex items-center justify-center px-12 py-5 bg-white/5 text-white rounded-full font-bold text-lg hover:bg-white/10 border border-tech-cyan/30 hover:border-tech-cyan hover:shadow-[0_0_30px_rgba(0,243,255,0.2)] transition-all duration-300 gap-3"
                         >
                             無料相談はこちら

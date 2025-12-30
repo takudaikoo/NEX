@@ -56,7 +56,7 @@ const OfferSection: React.FC = () => {
                 </Link>
 
                 <div className="mt-12 text-center">
-                    <Link href="/impact/application" className="group relative px-8 py-4 bg-transparent border border-impact-red text-impact-red font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:bg-impact-red hover:text-white inline-block">
+                    <Link href="/impact/reserve" className="group relative px-8 py-4 bg-transparent border border-impact-red text-impact-red font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:bg-impact-red hover:text-white inline-block">
                         <span className="relative z-10 flex items-center justify-center gap-3">
                             いますぐ解析を予約する
                         </span>
