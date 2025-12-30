@@ -7,13 +7,14 @@ export async function getAvailableSlots(
     durationMinutes: number
 ): Promise<Date[]> {
     // 1. Determine JST Day Range (00:00 - 23:59 JST)
-    // We treat the input 'date' as identifying the target calendar day.
-    // We assume input date objects/strings map correctly to the YYYY-MM-DD we want in JST.
+    // The incoming 'date' is a specific point in time (often UTC midnight or JST midnight in UTC).
+    // We want the "Calendar Date" in JST that this timestamp falls into.
 
-    // To ensure we get the YYYY-MM-DD part safely (assuming the input date represents the correct day),
-    // we just use the ISO date part.
-    // NOTE: validation of 'date' being correct day depends on caller.
-    const datePart = date.toISOString().split('T')[0];
+    // Shift the date by +9 hours to get the JST date part from the UTC-based ISO string
+    // e.g. Dec 31 00:00 JST -> Dec 30 15:00 UTC. 
+    // Adding 9 hours -> Dec 31 00:00. ISO String then shows Dec 31.
+    const jstDate = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+    const datePart = jstDate.toISOString().split('T')[0];
 
     // Construct start/end in strict ISO format with +09:00 offset to enforce JST
     const timeMinStr = `${datePart}T00:00:00+09:00`;
