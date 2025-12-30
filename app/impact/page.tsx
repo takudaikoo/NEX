@@ -43,9 +43,10 @@ export default function Page() {
                     <h2 className="text-3xl md:text-5xl font-bold font-noto-sans mb-6">
                         まずは、自分の動作の土台を知る
                     </h2>
-                    <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-                        初回体験セッションでは、現状の身体条件を整理し、<br />
-                        今後の方向性を一緒に確認します。
+                    <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        初回セッションは、治療やトレーニングを受ける場ではありません。<br />
+                        自身の身体条件や動作の前提を整理し、<br />
+                        今後の競技や日常動作をどう捉え、どう向き合うかを考えるための時間です。
                     </p>
                     <Link href="/impact/application" className="inline-flex items-center gap-3 px-10 py-5 bg-white text-impact-red font-bold text-xl rounded-full hover:bg-black hover:text-white transition-all duration-300 shadow-xl">
                         体験セッションを予約する
