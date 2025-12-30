@@ -16,7 +16,7 @@ const EmpathySection: React.FC = () => {
         <section className="relative z-10 py-24 px-6 md:px-12 bg-gray-50 overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <h2 className="text-2xl md:text-4xl font-bold font-noto-sans text-center text-white mb-16 leading-relaxed">
+                <h2 className="text-2xl md:text-4xl font-bold font-noto-sans text-center text-gray-900 mb-16 leading-relaxed">
                     こんな<span className="text-impact-red">“繰り返し”</span>に<br className="md:hidden" />
                     心当たりはありませんか？
                 </h2>
@@ -26,8 +26,8 @@ const EmpathySection: React.FC = () => {
                     {/* Visual: The Infinite Loop of Frustration */}
                     <div className="relative h-80 flex items-center justify-center">
                         {/* Background Rings */}
-                        <div className="absolute w-64 h-64 border-2 border-dashed border-gray-800 rounded-full animate-spin-slow opacity-50"></div>
-                        <div className="absolute w-48 h-48 border border-gray-700 rounded-full opacity-30"></div>
+                        <div className="absolute w-64 h-64 border-2 border-dashed border-gray-300 rounded-full animate-spin-slow opacity-50"></div>
+                        <div className="absolute w-48 h-48 border border-gray-200 rounded-full opacity-30"></div>
 
                         {/* The Loop Icon */}
                         <div className="text-impact-red animate-reverse-spin">
@@ -36,8 +36,8 @@ const EmpathySection: React.FC = () => {
 
                         {/* Text Inside */}
                         <div className="absolute text-center">
-                            <div className="text-xs text-gray-500 tracking-widest mb-2">REPEATED ERROR</div>
-                            <div className="text-2xl font-bold text-white tracking-widest">再現性<span className="text-gray-600">ゼロ</span></div>
+                            <div className="text-xs text-impact-red tracking-widest mb-2 font-bold">REPEATED ERROR</div>
+                            <div className="text-2xl font-bold text-gray-900 tracking-widest">再現性<span className="text-gray-400">ゼロ</span></div>
                         </div>
 
                         {/* Floating Dots */}
@@ -48,11 +48,11 @@ const EmpathySection: React.FC = () => {
                     {/* Checklist */}
                     <div className="space-y-6">
                         {painPoints.map((point, index) => (
-                            <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-impact-red/30 transition-colors duration-300">
+                            <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-200 hover:border-impact-red/30 transition-colors duration-300 shadow-sm">
                                 <div className="mt-1 min-w-[20px] text-impact-red">
                                     <AlertCircle size={20} />
                                 </div>
-                                <p className="text-gray-300 font-light leading-relaxed">
+                                <p className="text-gray-700 font-light leading-relaxed">
                                     {point}
                                 </p>
                             </div>

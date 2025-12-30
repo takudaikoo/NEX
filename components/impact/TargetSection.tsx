@@ -17,7 +17,7 @@ const TargetSection: React.FC = () => {
         },
         {
             icon: <GraduationCap size={32} />,
-            text: "感覚論や根性論に頼りたくない学生指導者",
+            text: "感覚論や根性論に頼りたくない学生を指導する指導者",
             color: "text-tech-yellow"
         }
     ];
