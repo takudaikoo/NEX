@@ -35,24 +35,26 @@ const EmpathySection: React.FC = () => {
                         </div>
 
                         {/* Text Inside */}
-                        <div className="absolute text-center">
-                            <div className="text-xs text-impact-red tracking-widest mb-2 font-bold">REPEATED ERROR</div>
-                            <div className="text-2xl font-bold text-gray-900 tracking-widest">再現性<span className="text-gray-400">ゼロ</span></div>
+                        <div className="absolute text-center z-10">
+                            <div className="text-sm text-impact-red tracking-[0.3em] mb-2 font-mono font-bold uppercase drop-shadow-sm">REPEATED ERROR</div>
+                            <div className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-wider drop-shadow-sm">
+                                再現性<span className="text-impact-red">ゼロ</span>
+                            </div>
                         </div>
 
                         {/* Floating Dots */}
-                        <div className="absolute top-10 right-20 w-2 h-2 bg-impact-red rounded-full animate-ping"></div>
-                        <div className="absolute bottom-10 left-20 w-2 h-2 bg-impact-red rounded-full animate-bounce"></div>
+                        <div className="absolute top-10 right-20 w-3 h-3 bg-impact-red rounded-full animate-ping opacity-75"></div>
+                        <div className="absolute bottom-10 left-20 w-3 h-3 bg-impact-red rounded-full animate-bounce opacity-75"></div>
                     </div>
 
                     {/* Checklist */}
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                         {painPoints.map((point, index) => (
-                            <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-200 hover:border-impact-red/30 transition-colors duration-300 shadow-sm">
-                                <div className="mt-1 min-w-[20px] text-impact-red">
-                                    <AlertCircle size={20} />
+                            <div key={index} className="flex items-center gap-5 p-5 rounded-xl bg-white/90 backdrop-blur-md border border-gray-100/50 hover:border-impact-red/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(255,46,46,0.1)] group">
+                                <div className="flex-shrink-0 text-gray-300 group-hover:text-impact-red transition-colors duration-300">
+                                    <AlertCircle size={24} strokeWidth={2} />
                                 </div>
-                                <p className="text-gray-700 font-light leading-relaxed">
+                                <p className="text-lg text-gray-800 font-bold leading-relaxed tracking-wide">
                                     {point}
                                 </p>
                             </div>
