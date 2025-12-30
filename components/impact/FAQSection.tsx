@@ -23,7 +23,7 @@ const FAQSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-24 px-6 bg-white">
+        <section className="relative z-10 py-24 px-6 bg-white">
             <div className="container mx-auto max-w-3xl">
                 <div className="text-center mb-16">
                     <span className="text-impact-red text-sm font-mono tracking-widest border border-impact-red/30 px-3 py-1 rounded mb-4 inline-block">FAQ</span>
