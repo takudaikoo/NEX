@@ -62,9 +62,9 @@ const EmpathySection: React.FC = () => {
 
                 {/* Conclusion */}
                 <div className="mt-20 text-center">
-                    <p className="text-lg md:text-xl text-white font-medium">
+                    <p className="text-lg md:text-xl text-gray-900 font-medium">
                         それらはすべて、<br className="md:hidden" />
-                        <span className="text-gray-400">能力や努力の問題ではない可能性があります。</span>
+                        <span className="text-gray-500">能力や努力の問題ではない可能性があります。</span>
                     </p>
                 </div>
             </div>

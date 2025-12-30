@@ -10,6 +10,8 @@ import Footer from '@/components/impact/Footer';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+import ImpactThreeBackground from '@/components/impact/ImpactThreeBackground';
+
 export const metadata = {
     title: 'Impact Analysis | 動作解析サービス',
     description: '感覚の限界を「物理」で突破する。動作そのものではなく「動作が始まる前の身体条件」を解析するサービスです。',
@@ -17,7 +19,10 @@ export const metadata = {
 
 export default function Page() {
     return (
-        <div className="bg-white text-gray-900 selection:bg-impact-red selection:text-white overflow-x-hidden">
+        <div className="relative text-gray-900 selection:bg-impact-red selection:text-white overflow-x-hidden min-h-screen">
+
+            {/* 3D Background */}
+            <ImpactThreeBackground />
 
             {/* 1. Hero */}
             <HeroSection />
