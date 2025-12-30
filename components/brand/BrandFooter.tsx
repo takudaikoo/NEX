@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function BrandFooter() {
     return (
-        <footer className="relative z-10 w-full py-12 bg-black text-center border-t border-white/10">
+        <footer className="relative z-10 w-full py-12 bg-black/60 backdrop-blur-sm text-center border-t border-white/10">
             <h2 className="text-2xl font-bold tracking-[0.2em] mb-4 text-white">
                 NXS
             </h2>

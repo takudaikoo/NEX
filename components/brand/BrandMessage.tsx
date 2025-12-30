@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function BrandMessage() {
     return (
-        <section className="relative w-full py-32 px-6 md:px-12 bg-black/80 backdrop-blur-sm z-10 border-t border-white/5 text-center">
+        <section className="relative w-full py-32 px-6 md:px-12 bg-black/60 backdrop-blur-sm z-10 border-t border-white/5 text-center">
 
             {/* Main Message (Hero Copy) */}
             <div className="mb-24 animate-fade-in-up">
