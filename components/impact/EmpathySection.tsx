@@ -42,9 +42,7 @@ const EmpathySection: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Floating Dots */}
-                        <div className="absolute top-10 right-20 w-3 h-3 bg-impact-red rounded-full animate-ping opacity-75"></div>
-                        <div className="absolute bottom-10 left-20 w-3 h-3 bg-impact-red rounded-full animate-bounce opacity-75"></div>
+
                     </div>
 
                     {/* Checklist */}
