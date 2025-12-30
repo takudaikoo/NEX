@@ -127,46 +127,45 @@ export default function DemoPage() {
                         </div>
                     </div>
                 </div>
+
+                {/* 4. Tech Stack */}
+                <div className="text-center mb-24">
+                    <h3 className="text-white/40 font-mono text-sm mb-6 uppercase tracking-widest">Powered By</h3>
+                    <div className="flex flex-wrap justify-center gap-8 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                        {/* Mock Icons/Names */}
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg">
+                            <Bot size={18} />
+                            <span className="font-bold">ChatGPT / LLMs</span>
+                        </div>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg">
+                            <FileSpreadsheet size={18} />
+                            <span className="font-bold">Excel / Spreadsheets</span>
+                        </div>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg">
+                            <Database size={18} />
+                            <span className="font-bold">No-Code Tools</span>
+                        </div>
+                    </div>
+                    <p className="mt-4 text-xs text-white/30">※技術選定は要件に応じて最適化します</p>
+                </div>
+
+                {/* 5. Low-tone CTA */}
+                <div className="text-center border-t border-white/10 pt-16">
+                    <p className="text-white/60 mb-8">
+                        ※ 本デモは一例です。業務内容・要件に応じて設計は異なります。<br />
+                        セキュリティ・権限設計を考慮した実装が可能です。
+                    </p>
+
+                    <Link
+                        href="/flow/consultation"
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 transition-all hover:scale-105"
+                    >
+                        <span>自社業務で実現できるか相談する</span>
+                        <ArrowRight size={18} />
+                    </Link>
+                </div>
+
+            </main>
         </div>
-
-                {/* 4. Tech Stack */ }
-    <div className="text-center mb-24">
-        <h3 className="text-white/40 font-mono text-sm mb-6 uppercase tracking-widest">Powered By</h3>
-        <div className="flex flex-wrap justify-center gap-8 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Mock Icons/Names */}
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg">
-                <Bot size={18} />
-                <span className="font-bold">ChatGPT / LLMs</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg">
-                <FileSpreadsheet size={18} />
-                <span className="font-bold">Excel / Spreadsheets</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg">
-                <Database size={18} />
-                <span className="font-bold">No-Code Tools</span>
-            </div>
-        </div>
-        <p className="mt-4 text-xs text-white/30">※技術選定は要件に応じて最適化します</p>
-    </div>
-
-    {/* 5. Low-tone CTA */ }
-    <div className="text-center border-t border-white/10 pt-16">
-        <p className="text-white/60 mb-8">
-            ※ 本デモは一例です。業務内容・要件に応じて設計は異なります。<br />
-            セキュリティ・権限設計を考慮した実装が可能です。
-        </p>
-
-        <Link
-            href="/flow/consultation"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 transition-all hover:scale-105"
-        >
-            <span>自社業務で実現できるか相談する</span>
-            <ArrowRight size={18} />
-        </Link>
-    </div>
-
-            </main >
-        </div >
     );
 }
