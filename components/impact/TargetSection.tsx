@@ -23,20 +23,20 @@ const TargetSection: React.FC = () => {
     ];
 
     return (
-        <section className="relative z-10 py-24 px-6 md:px-12 bg-zinc-950">
+        <section className="relative z-10 py-24 px-6 md:px-12 bg-white">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16">
                     <span className="text-impact-red text-sm font-mono tracking-widest border border-impact-red/30 px-3 py-1 rounded mb-4 inline-block">TARGET</span>
-                    <h2 className="text-3xl font-bold font-noto-sans text-white">こんな方に向いています</h2>
+                    <h2 className="text-3xl font-bold font-noto-sans text-gray-900">こんな方に向いています</h2>
                 </div>
 
                 <div className="space-y-4">
                     {targets.map((target, index) => (
-                        <div key={index} className="flex items-center gap-6 p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors duration-300 group">
-                            <div className={`p-4 rounded-full bg-black border border-white/10 ${target.color} group-hover:scale-110 transition-transform duration-300`}>
+                        <div key={index} className="flex items-center gap-6 p-6 bg-gray-50 border border-gray-100 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
+                            <div className={`p-4 rounded-full bg-white border border-gray-200 ${target.color} group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
                                 {target.icon}
                             </div>
-                            <p className="text-lg text-gray-200 font-medium">
+                            <p className="text-lg text-gray-700 font-medium">
                                 {target.text}
                             </p>
                         </div>

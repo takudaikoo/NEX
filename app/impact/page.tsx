@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function Page() {
     return (
-        <div className="bg-black text-white selection:bg-impact-red selection:text-white overflow-x-hidden">
+        <div className="bg-white text-gray-900 selection:bg-impact-red selection:text-white overflow-x-hidden">
 
             {/* 1. Hero */}
             <HeroSection />

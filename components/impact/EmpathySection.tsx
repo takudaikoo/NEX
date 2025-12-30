@@ -13,7 +13,7 @@ const EmpathySection: React.FC = () => {
     ];
 
     return (
-        <section className="relative z-10 py-24 px-6 md:px-12 bg-black overflow-hidden">
+        <section className="relative z-10 py-24 px-6 md:px-12 bg-gray-50 overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <h2 className="text-2xl md:text-4xl font-bold font-noto-sans text-center text-white mb-16 leading-relaxed">
