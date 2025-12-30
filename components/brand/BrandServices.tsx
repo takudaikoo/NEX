@@ -77,7 +77,7 @@ export default function BrandServices({ setHoverState }: Props) {
                 OUR DOMAINS
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto h-auto md:h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto h-auto md:h-[450px]">
 
                 {/* Flow */}
                 <Link
