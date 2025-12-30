@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
                     </h2>
 
                     <div className="pt-4">
-                        <Link href="/cyber/application" className="group relative inline-flex items-center justify-center px-8 py-5 bg-cyber-green text-black font-bold text-xl rounded-full shadow-[0_10px_40px_rgba(0,255,65,0.4)] overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_60px_rgba(0,255,65,0.6)]">
+                        <Link href="/cyber/reserve" className="group relative inline-flex items-center justify-center px-8 py-5 bg-cyber-green text-black font-bold text-xl rounded-full shadow-[0_10px_40px_rgba(0,255,65,0.4)] overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_60px_rgba(0,255,65,0.6)]">
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             <span className="relative z-10 flex items-center gap-3">
                                 まずは30分、技術で「未来」を変える体験へ

@@ -19,23 +19,25 @@ const HeroSection: React.FC = () => {
 
                 {/* Main Headline */}
                 <h1 className="text-3xl md:text-5xl font-bold font-noto-sans text-gray-900 mb-8 leading-tight tracking-tight">
-                    努力しているのに、<br />
-                    なぜか安定しない。<br />
+                    練習しても上達しない、<br />
+                    感覚と結果が一致しない。<br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-impact-red to-gray-900">
-                        その原因、動きの前にあります。
+                        その原因、動く前にあります。
                     </span>
                 </h1>
-
                 {/* Sub Headline */}
                 <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
                     フォームを直しても、トレーニングを積んでも、<br />
                     なぜか再現性が出ない。<br /><br />
-                    Impactは、<span className="font-bold text-gray-900">動作そのものではなく「動作が始まる前の身体条件」</span>を解析するサービスです。
+                    Impactは、動作そのものではなく<br />
+                    動作が成立する前提となる身体条件と、<br />
+                    動作中に働く物理的要因を解析し、<br />
+                    パフォーマンス向上に活用するサービスです。
                 </p>
 
                 {/* CTA Button */}
                 <div className="flex flex-col items-center gap-4">
-                    <Link href="/impact/application" className="group relative px-8 py-4 bg-impact-red text-white font-bold text-lg tracking-widest uppercase overflow-hidden transition-all hover:bg-white hover:text-black hover:scale-105 inline-block rounded-full shadow-lg">
+                    <Link href="/impact/reserve" className="group relative px-8 py-4 bg-impact-red text-white font-bold text-lg tracking-widest uppercase overflow-hidden transition-all hover:bg-white hover:text-black hover:scale-105 inline-block rounded-full shadow-lg">
                         <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 transform skew-y-12"></div>
                         <span className="relative z-10 flex items-center gap-3">
                             初回体験セッションを予約する

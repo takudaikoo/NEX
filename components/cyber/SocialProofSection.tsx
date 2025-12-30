@@ -61,7 +61,7 @@ const SocialProofSection: React.FC = () => {
                 {/* Mid-Page CTA */}
                 <div className="mt-20 text-center">
                     <p className="font-bold text-cyber-midnight mb-6">次は、あなたの番です。</p>
-                    <Link href="/cyber/application" className="inline-block px-10 py-4 bg-cyber-green text-black font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                    <Link href="/cyber/reserve" className="inline-block px-10 py-4 bg-cyber-green text-black font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
                         体験セッションに申し込む
                     </Link>
                     <p className="mt-4 text-xs text-gray-400">体験価格は予告なく終了する場合があります</p>

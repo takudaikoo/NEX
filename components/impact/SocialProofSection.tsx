@@ -56,7 +56,7 @@ const SocialProofSection: React.FC = () => {
 
                 {/* Mid CTA */}
                 <div className="mt-16 text-center">
-                    <Link href="/impact/application" className="group relative px-8 py-4 bg-transparent border border-impact-red/50 text-impact-red font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:bg-impact-red hover:text-white inline-block">
+                    <Link href="/impact/reserve" className="group relative px-8 py-4 bg-transparent border border-impact-red/50 text-impact-red font-bold text-sm tracking-widest uppercase overflow-hidden transition-all hover:bg-impact-red hover:text-white inline-block">
                         今月の解析枠を確認する ＞
                     </Link>
                     <p className="text-xs text-gray-400 mt-2">（残りわずか）</p>

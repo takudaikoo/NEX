@@ -44,7 +44,7 @@ export default function BrandPhilosophy() {
     }, []);
 
     return (
-        <section className="relative w-full py-24 px-6 md:px-12 bg-gradient-to-b from-black/80 to-black z-10">
+        <section className="relative w-full py-24 px-6 md:px-12 bg-black/60 backdrop-blur-sm z-10">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-xl md:text-2xl font-bold font-sans text-tech-green mb-16 text-center tracking-widest uppercase">
                     OUR APPROACH
