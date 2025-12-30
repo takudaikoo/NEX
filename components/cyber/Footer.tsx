@@ -62,6 +62,7 @@ const Footer: React.FC<FooterProps> = ({ isApplicationPage = false, variant = 'd
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
                     <div className="font-mono">© 2025 NXS. All Rights Reserved.</div>
                     <div className="flex gap-6">
+                        <Link href="/" className="hover:text-cyber-green transition-colors">運営会社</Link>
                         {activePage !== 'tokusho-ho' && (
                             <Link href="/cyber/legal/tokusho-ho" className="hover:text-cyber-green transition-colors">特定商取引法に基づく表記</Link>
                         )}

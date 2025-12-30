@@ -137,6 +137,7 @@ export const FlowLegalFooter = ({ activePage }: { activePage?: 'tokusho-ho' | 'p
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-sm">
                 <div className="order-2 md:order-1">&copy; 2025 Tech Curator. All rights reserved.</div>
                 <div className="flex gap-6 order-1 md:order-2">
+                    <Link href="/" className="hover:text-tech-cyan transition-colors">運営会社</Link>
                     {activePage !== 'tokusho-ho' && (
                         <Link href="/flow/legal/tokusho-ho" className="hover:text-tech-cyan transition-colors">特定商取引法に基づく表記</Link>
                     )}
@@ -170,6 +171,7 @@ export const FooterCTA = () => (
             <div className="mt-20 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-sm">
                 <div className="order-2 md:order-1">&copy; 2025 Tech Curator. All rights reserved.</div>
                 <div className="flex gap-6 order-1 md:order-2">
+                    <Link href="/" className="hover:text-tech-cyan transition-colors">運営会社</Link>
                     <Link href="/flow/legal/tokusho-ho" className="hover:text-tech-cyan transition-colors">特定商取引法に基づく表記</Link>
                     <Link href="/flow/legal/privacy" className="hover:text-tech-cyan transition-colors">プライバシーポリシー</Link>
                 </div>

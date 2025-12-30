@@ -65,6 +65,7 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', activePage }) => {
                 <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
                     <div>© Sports Mechanics Lab. All Rights Reserved.</div>
                     <div className="flex gap-6 mt-4 md:mt-0">
+                        <Link href="/" className="hover:text-impact-red">運営会社</Link>
                         {activePage !== 'tokusho-ho' && (
                             <Link href="/impact/legal/tokusho-ho" className="hover:text-impact-red">特定商取引法に基づく表記</Link>
                         )}
