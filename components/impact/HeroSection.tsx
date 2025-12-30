@@ -28,16 +28,17 @@ const HeroSection: React.FC = () => {
 
                 {/* Sub Headline */}
                 <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                    あなたの伸び悩みは、努力不足ではなく「動作のバグ」だ。<br />
-                    60分で走りを演算し、一生モノの「修正処方箋」を出す。
+                    努力しているのに、なぜか安定しない。<br />
+                    その原因、動きの前にあります。<br /><br />
+                    Impactは、<span className="font-bold text-gray-900">動作そのものではなく「動作が始まる前の身体条件」</span>を解析するサービスです。
                 </p>
 
                 {/* CTA Button */}
                 <div className="flex flex-col items-center gap-4">
-                    <Link href="/impact/application" className="group relative px-8 py-4 bg-impact-red text-white font-bold text-lg tracking-widest uppercase overflow-hidden transition-all hover:bg-white hover:text-black hover:scale-105 inline-block">
+                    <Link href="/impact/application" className="group relative px-8 py-4 bg-impact-red text-white font-bold text-lg tracking-widest uppercase overflow-hidden transition-all hover:bg-white hover:text-black hover:scale-105 inline-block rounded-full shadow-lg">
                         <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 transform skew-y-12"></div>
                         <span className="relative z-10 flex items-center gap-3">
-                            今月の解析枠を確認する
+                            初回体験セッションを予約する
                             <ArrowRight size={20} />
                         </span>
                     </Link>
