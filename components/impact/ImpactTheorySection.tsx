@@ -4,7 +4,7 @@ import React from 'react';
 
 const ImpactTheorySection: React.FC = () => {
     return (
-        <section className="relative z-10 py-24 px-6 md:px-12 bg-gray-50/90 backdrop-blur-sm text-gray-900">
+        <section className="relative z-10 py-24 px-6 md:px-12 bg-gray-50/80 backdrop-blur-sm text-gray-900">
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
                 {/* Content */}

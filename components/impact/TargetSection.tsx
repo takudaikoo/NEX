@@ -23,7 +23,7 @@ const TargetSection: React.FC = () => {
     ];
 
     return (
-        <section className="relative z-10 py-24 px-6 md:px-12 bg-white/90 backdrop-blur-sm">
+        <section className="relative z-10 py-24 px-6 md:px-12 bg-white/80 backdrop-blur-sm">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16">
                     <span className="text-impact-red text-sm font-mono tracking-widest border border-impact-red/30 px-3 py-1 rounded mb-4 inline-block">TARGET</span>

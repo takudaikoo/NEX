@@ -5,7 +5,7 @@ import { MoveRight } from 'lucide-react';
 
 const CauseSection: React.FC = () => {
     return (
-        <section className="relative z-10 py-24 px-6 md:px-12 bg-white/90 backdrop-blur-sm text-gray-900 overflow-hidden">
+        <section className="relative z-10 py-24 px-6 md:px-12 bg-white/80 backdrop-blur-sm text-gray-900 overflow-hidden">
             <div className="max-w-5xl mx-auto text-center">
 
                 {/* Title */}
