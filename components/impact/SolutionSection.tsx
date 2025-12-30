@@ -54,15 +54,34 @@ const SolutionSection: React.FC = () => {
                                 <div className="absolute inset-0 border-t border-b border-gray-100 my-auto h-1/2"></div>
                                 <div className="absolute inset-0 border-l border-r border-gray-100 mx-auto w-1/2"></div>
 
-                                {/* Skeleton / Overlay Mockup */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 border-2 border-dashed border-impact-red/30 rounded-lg flex items-center justify-center">
-                                    <Search className="text-impact-red animate-pulse" size={48} />
+                                {/* Background Grid */}
+                                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+
+                                {/* Force Graph SVG */}
+                                <div className="absolute inset-4">
+                                    <svg viewBox="0 0 100 60" className="w-full h-full overflow-visible">
+                                        {/* Axis */}
+                                        <line x1="0" y1="60" x2="100" y2="60" stroke="#ddd" strokeWidth="1" />
+                                        <line x1="0" y1="0" x2="0" y2="60" stroke="#ddd" strokeWidth="1" />
+
+                                        {/* Data Line (Normal - Grey) */}
+                                        <path d="M0,60 Q20,50 40,30 T80,40 T100,50" fill="none" stroke="#ccc" strokeWidth="2" strokeDasharray="3 3" />
+
+                                        {/* Data Line (Improved - Red) */}
+                                        <path d="M0,60 Q20,40 40,10 T80,30 T100,20" fill="none" stroke="#eb0000" strokeWidth="3" className="drop-shadow-lg">
+                                            <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="2s" fill="freeze" />
+                                        </path>
+
+                                        {/* Point of Interest */}
+                                        <circle cx="40" cy="10" r="3" fill="#eb0000" className="animate-pulse" />
+                                        <text x="45" y="10" fontSize="4" fill="#eb0000" fontWeight="bold">MAX FORCE</text>
+                                    </svg>
                                 </div>
 
                                 {/* Floating Metrics */}
-                                <div className="absolute top-10 right-10 bg-white/90 backdrop-blur border border-impact-red/20 p-3 rounded font-mono text-xs text-impact-red shadow-lg">
-                                    <div>VECTOR: +12.4%</div>
-                                    <div>LOSS: 0.8%</div>
+                                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur border border-impact-red/20 p-3 rounded font-mono text-xs text-impact-red shadow-lg">
+                                    <div className="flex justify-between gap-4"><span>VECTOR</span> <span>+12.4%</span></div>
+                                    <div className="flex justify-between gap-4 text-gray-400"><span>LOSS</span> <span>0.8%</span></div>
                                 </div>
                             </div>
                         </div>

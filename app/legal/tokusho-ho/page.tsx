@@ -1,28 +1,36 @@
 import React from 'react';
-import Footer from '@/components/cyber/Footer';
+import Link from 'next/link';
+import BrandFooter from '@/components/brand/BrandFooter';
+import { ArrowLeft } from 'lucide-react';
 
 export const metadata = {
-    title: '特定商取引法に基づく表記 | NEX',
+    title: '特定商取引法に基づく表記 | NXS',
     description: '特定商取引法に基づく表記',
 };
 
 export default function TokushoHoPage() {
     return (
-        <div className="min-h-screen bg-[#0B1026] text-white font-noto-sans selection:bg-cyber-vermilion selection:text-white pb-20">
-            <header className="py-8 px-6 border-b border-white/10 mb-12">
-                <div className="container mx-auto">
-                    <h1 className="text-2xl font-bold">NEX</h1>
+        <div className="min-h-screen bg-black text-white font-noto-sans selection:bg-tech-cyan selection:text-black flex flex-col">
+            <header className="py-8 px-6 border-b border-white/10">
+                <div className="container mx-auto flex justify-between items-center">
+                    <Link href="/" className="text-2xl font-bold tracking-widest hover:text-tech-cyan transition-colors">
+                        NXS
+                    </Link>
+                    <Link href="/" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                        <ArrowLeft size={16} />
+                        TOPへ戻る
+                    </Link>
                 </div>
             </header>
 
-            <main className="container mx-auto px-6 max-w-4xl">
-                <h1 className="text-3xl md:text-4xl font-bold mb-12">特定商取引法に基づく表記</h1>
+            <main className="flex-grow container mx-auto px-6 py-20 max-w-4xl">
+                <h1 className="text-3xl md:text-4xl font-bold mb-16 tracking-wide border-l-4 border-tech-cyan pl-6">特定商取引法に基づく表記</h1>
 
                 <div className="space-y-8">
                     {/* Item */}
                     <div className="border-b border-white/10 pb-8 grid md:grid-cols-[200px_1fr] gap-4">
                         <div className="font-bold text-white/60">販売事業者名</div>
-                        <div>株式会社XADS</div>
+                        <div>株式会社NXS</div>
                     </div>
 
                     <div className="border-b border-white/10 pb-8 grid md:grid-cols-[200px_1fr] gap-4">
@@ -86,14 +94,9 @@ export default function TokushoHoPage() {
                         </div>
                     </div>
                 </div>
-
-                <div className="mt-12">
-                    <a href="/cyber" className="text-tech-cyan hover:underline">
-                        ← トップページへ戻る
-                    </a>
-                </div>
             </main>
-            <Footer variant="simple" activePage="tokusho-ho" />
+
+            <BrandFooter />
         </div>
     );
 }

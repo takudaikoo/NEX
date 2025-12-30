@@ -20,12 +20,15 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', activePage }) => {
                 {variant === 'default' ? (
                     <>
                         <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 leading-relaxed">
-                            追伸：今のフォームで走り続けて、<br />
-                            1年後に怪我をしているか。<br /><br />
-                            今日60分を使って、<br />
-                            <span className="text-impact-red">「正しい地図」</span>を手に入れるか。
+                            追伸：今の身体の使い方が<br />
+                            「再現性のある条件なのか」<br />
+                            「偶然成立している状態なのか」<br /><br />
+                            その違いを整理します。
                         </h2>
-                        <p className="text-gray-600 mb-12">リスクのない選択をしてください。</p>
+                        <p className="text-xl text-gray-900 mb-12 font-medium">
+                            判断材料を持った上で、<br />
+                            次に進むかどうかを決めてください。
+                        </p>
 
                         <div className="flex flex-col items-center gap-4 mb-24">
                             <Link href="/impact/application" className="group relative px-12 py-5 bg-impact-red text-white font-bold text-xl tracking-widest uppercase overflow-hidden transition-all hover:bg-white hover:text-black hover:scale-105 shadow-[0_0_50px_rgba(255,0,0,0.4)]">

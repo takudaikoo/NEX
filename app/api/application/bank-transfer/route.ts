@@ -31,14 +31,14 @@ export async function POST(req: NextRequest) {
                         <strong>支店名:</strong> 福井支店<br>
                         <strong>口座種別:</strong> 普通<br>
                         <strong>口座番号:</strong> 0691873<br>
-                        <strong>口座名義:</strong> カ）エックスエーディーエス
+                        <strong>口座名義:</strong> カ）エヌエックスエス
                     </p>
                     <p><strong>金額: 8,000円 (税込)</strong></p>
                 </div>
                 
                 <p>
                     <strong>事業者情報:</strong><br>
-                    株式会社XADS<br>
+                    株式会社NXS<br>
                     代表者 小尾 拓大<br>
                     所在地 東京都荒川区荒川
                 </p>

@@ -71,7 +71,8 @@ const ApplicationForm: React.FC = () => {
                 if (error) throw error;
             } else {
                 // Bank Transfer
-                const response = await fetch('/api/application/bank-transfer', {
+                // Bank Transfer - Use dedicated Cyber API
+                const response = await fetch('/api/cyber/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData),

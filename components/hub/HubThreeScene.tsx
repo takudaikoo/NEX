@@ -82,6 +82,58 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
         scene.add(particles);
         particlesRef.current = particles;
 
+        // 3. Moons (Satellites)
+        const moonsContainer = new THREE.Group();
+        scene.add(moonsContainer);
+
+        const moons: { group: THREE.Group, mesh: THREE.Mesh, t: number, speed: number }[] = [];
+        const moonCount = 2;
+
+        // Trajectory: Deep Center -> Hook Top-Left -> Exit Bottom-Right
+        const curve = new THREE.CatmullRomCurve3([
+            new THREE.Vector3(0, 0, -120),    // Start: Deep Center
+            new THREE.Vector3(-50, 30, -80),  // Hook: Move towards Top-Left
+            new THREE.Vector3(-20, 10, -40),  // Stabilization: Curving back
+            new THREE.Vector3(25, -15, 25),   // Near Camera (ZOOM! Closer to z=20)
+            new THREE.Vector3(80, -50, 80)    // Exit: Bottom-Right with momentum
+        ]);
+
+        const moonGeo = new THREE.IcosahedronGeometry(4, 1);
+        const moonMat = new THREE.MeshBasicMaterial({
+            color: 0xddeeff, // Brighter!
+            wireframe: true,
+            transparent: true,
+            opacity: 0.6 // Much more visible (was 0.15)
+            // Note: linewidth is typically ignored by WebGL renderers on Windows
+        });
+
+        for (let i = 0; i < moonCount; i++) {
+            const moonGroup = new THREE.Group();
+
+            // Gyro Ring Effect (optional, just pure geometry for now as per "Moon")
+            const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+            moonGroup.add(moonMesh);
+
+            // Add inner core for the moon to make it look solid but techy
+            const moonCoreGeo = new THREE.IcosahedronGeometry(2, 0);
+            const moonCoreMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1 });
+            const moonCore = new THREE.Mesh(moonCoreGeo, moonCoreMat);
+            moonMesh.add(moonCore);
+
+            moonsContainer.add(moonGroup);
+
+            // Offset starting time so they are equal intervals
+            // t goes from 0 to 1.
+            // i=0 -> t=0
+            // i=1 -> t=0.5
+            moons.push({
+                group: moonGroup,
+                mesh: moonMesh,
+                t: i * (1 / moonCount),
+                speed: 0.006 // Hyper Speed for "Rush" feel
+            });
+        }
+
         // Animation Loop
         const animate = () => {
             requestAnimationFrame(animate);
@@ -95,6 +147,34 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
                 particles.rotation.y -= 0.0005;
             }
 
+            // Animate Moons
+            moons.forEach(moon => {
+                // Update position on curve
+                moon.t += moon.speed;
+                if (moon.t > 1) moon.t = 0;
+
+                const position = curve.getPoint(moon.t);
+                moon.group.position.copy(position);
+
+                // Scale effect: Grow as it gets closer? (Natural perspective handles this generally, but maybe enhance)
+                // Perspective camera handles sizing naturally.
+
+                // Gyro Rotation Logic
+                // 1. Point Rotation Axis towards Camera
+                moon.group.lookAt(camera.position);
+
+                // 2. Tilt Axis 10 degrees UP relative to camera view
+                // Rotating around local X axis tilts the Z axis (which points to camera) up/down.
+                moon.group.rotateX(10 * (Math.PI / 180));
+
+                // 3. Spin: High RPM Counter-Clockwise (CCW) around the tilted axis (Local Z)
+                moon.mesh.rotation.z += 0.15;
+
+                // Slight Precession/Wobble on other axes to keep 3D feel
+                moon.mesh.rotation.x = Math.sin(Date.now() * 0.003) * 0.2;
+                moon.mesh.rotation.y = Math.cos(Date.now() * 0.002) * 0.2;
+            });
+
             renderer.render(scene, camera);
         };
         animate();
@@ -102,11 +182,23 @@ const HubThreeScene: React.FC<Props> = ({ hoverState }) => {
         // Resize
         const handleResize = () => {
             if (!cameraRef.current || !rendererRef.current) return;
+
+            // Update aspect ratio
             cameraRef.current.aspect = window.innerWidth / window.innerHeight;
             cameraRef.current.updateProjectionMatrix();
             rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+
+            // Responsive Scaling for Mobile
+            const isMobile = window.innerWidth < 768;
+            const targetScale = isMobile ? 0.45 : 1; // Scale down further (45%) to narrow range on mobile
+            if (moonsContainer) {
+                moonsContainer.scale.set(targetScale, targetScale, targetScale);
+            }
         };
         window.addEventListener('resize', handleResize);
+
+        // Initial Call
+        handleResize();
 
         return () => {
             window.removeEventListener('resize', handleResize);

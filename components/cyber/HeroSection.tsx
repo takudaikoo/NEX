@@ -48,29 +48,48 @@ const HeroSection: React.FC = () => {
                 {/* Right: Visual (Controller Concept) */}
                 <div className="relative h-[600px] hidden md:block">
                     {/* Placeholder for "Controller" image */}
-                    {/* Person smiling at data screens with Co-Pilot ghost behind */}
                     <div className="absolute inset-0 z-10 flex items-center justify-center">
                         <div className="w-full h-full relative">
-                            {/* Abstract representation of Hologram Controls */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-r from-cyber-green/20 to-cyber-dark/20 rounded-full blur-[100px] animate-pulse-fast"></div>
+                            {/* Matrix Rain Effect (Simplified CSS) */}
+                            <div className="absolute inset-0 bg-black/40 rounded-3xl border border-cyber-green/20 backdrop-blur-sm overflow-hidden flex flex-col shadow-[0_0_50px_rgba(0,255,65,0.1)]">
+                                {/* Fake Terminal Header */}
+                                <div className="h-8 bg-black/80 border-b border-cyber-green/20 flex items-center px-4 gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500 opacity-50"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-50"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-500 opacity-50"></div>
+                                    <div className="ml-4 text-xs font-mono text-cyber-green/60">nxs-cyber-core v1.0.4</div>
+                                </div>
+                                {/* Terminal Body */}
+                                <div className="flex-1 p-6 font-mono text-xs md:text-sm text-cyber-green/80 relative">
+                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:100%_24px]"></div>
+                                    <div className="space-y-2 opacity-80">
+                                        <p>&gt; <span className="text-white">init_sequence()</span></p>
+                                        <p className="pl-4 text-cyber-green/60">loading modules... [OK]</p>
+                                        <p className="pl-4 text-cyber-green/60">connecting to neural link... [OK]</p>
+                                        <p>&gt; <span className="text-white">analyze_workflow(current_user)</span></p>
+                                        <p className="pl-4 text-yellow-400">&gt;&gt; WARNING: inefficiencies detected</p>
+                                        <p className="pl-4 text-yellow-400">&gt;&gt; automation_opportunity: 84%</p>
+                                        <p>&gt; <span className="text-white">deploy_solution --force</span></p>
+                                        <p className="pl-4 animate-pulse">executing script...</p>
+                                        <div className="mt-4 border border-cyber-green/40 p-2 inline-block bg-cyber-green/10 rounded">
+                                            Result: <span className="font-bold text-white">Productivity 10x</span>
+                                        </div>
+                                    </div>
 
-                            {/* The Person (Silhouette for placeholder) */}
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-3/4 bg-gradient-to-t from-black to-gray-800 rounded-t-3xl opacity-80 backdrop-blur-sm border-t border-white/20">
-                                <div className="absolute top-10 left-10 right-10 bottom-0 border border-cyber-green/30 rounded-t-xl bg-black/50 overflow-hidden">
-                                    {/* Code Hologram */}
-                                    <div className="p-4 font-mono text-xs text-cyber-green/60 opacity-50">
-                                        &gt; init_controller_mode()<br />
-                                        &gt; ai_status: ONLINE<br />
-                                        &gt; optimizing_workflow... 100%<br />
-                                        &gt; confidence_level: MAX
+                                    {/* Success Badge */}
+                                    <div className="absolute bottom-10 right-10 bg-cyber-green text-black px-6 py-4 rounded font-bold shadow-[0_0_20px_rgba(0,255,65,0.4)] animate-bounce">
+                                        JOB COMPLETE ✅
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Hand Gesture Ring */}
-                            <div className="absolute top-[40%] left-[60%] w-32 h-32 border-2 border-dashed border-cyber-gold rounded-full animate-spin-slow opacity-80"></div>
-                            <div className="absolute top-[40%] left-[60%] w-32 h-32 flex items-center justify-center text-cyber-gold font-bold tracking-widest text-xs uppercase animate-pulse">
-                                Control
+                            {/* Floating "Controller" Elements */}
+                            <div className="absolute top-[20%] -right-10 w-48 bg-black/80 border border-cyber-gold/50 rounded p-4 shadow-xl backdrop-blur-md animate-pulse">
+                                <div className="text-cyber-gold text-xs font-bold mb-2">⚠ SKILL GAP DETECTED</div>
+                                <div className="h-1 bg-gray-800 rounded full overflow-hidden">
+                                    <div className="h-full bg-cyber-gold w-3/4"></div>
+                                </div>
+                                <div className="text-right text-[10px] text-gray-400 mt-1">FILLING... 75%</div>
                             </div>
                         </div>
                     </div>

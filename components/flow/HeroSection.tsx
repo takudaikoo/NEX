@@ -2,58 +2,87 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, PlayCircle, Play } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20 pb-12 bg-tech-navy">
+            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-                {/* Text Content */}
-                <div className="lg:col-span-8 space-y-8 text-center lg:text-left pt-20 lg:pt-0">
-                    {/* Concept Tag */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md animate-fade-in-up">
-                        <span className="w-2 h-2 rounded-full bg-tech-cyan animate-pulse"></span>
-                        <span className="text-tech-cyan font-mono text-xs tracking-widest uppercase">Architect, not Mason</span>
+                {/* Left: Copy & Metrics */}
+                <div className="order-2 lg:order-1 space-y-8 text-center lg:text-left">
+                    {/* H1 */}
+                    <div className="space-y-4">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-noto-sans leading-tight text-white mb-6">
+                            最短1週間で<br />
+                            業務に使える<br />
+                            <span className="text-tech-cyan">プロトタイプ</span>を実装
+                        </h1>
+                        {/* H2 */}
+                        <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light">
+                            中小企業・スタートアップ向け。<br />
+                            低コストで業務改善を実現します。
+                        </p>
                     </div>
 
-                    {/* Main Headline */}
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-noto-sans tracking-tight leading-tight text-white animate-fade-in-up delay-100">
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50">
-                            「ゼロから作らない」
-                        </span>
-                        <span className="block text-4xl md:text-6xl lg:text-7xl mt-2 font-light text-white/90">
-                            という、最も賢い開発スタイル。
-                        </span>
-                    </h1>
+                    {/* Metrics */}
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                        <ul className="space-y-4">
+                            <li className="flex items-center justify-between text-white">
+                                <span className="opacity-70">開発期間</span>
+                                <div className="text-xl font-bold">
+                                    <span className="opacity-40 line-through text-sm mr-2">3ヶ月</span>
+                                    <span className="text-tech-cyan text-2xl">→ 1週間</span>
+                                </div>
+                            </li>
+                            <li className="flex items-center justify-between text-white border-t border-white/10 pt-4">
+                                <span className="opacity-70">コスト</span>
+                                <div className="text-xl font-bold">
+                                    <span className="opacity-40 line-through text-sm mr-2">数百万円</span>
+                                    <span className="text-tech-cyan text-2xl">→ 5万円〜</span>
+                                </div>
+                            </li>
+                            <li className="flex items-center justify-between text-white border-t border-white/10 pt-4">
+                                <span className="opacity-70">内製化率</span>
+                                <div className="text-xl font-bold">
+                                    <span className="text-tech-green text-2xl">80%以上</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                    {/* Sub Headline */}
-                    <p className="text-lg md:text-xl text-white/70 font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up delay-200">
-                        世界中のテクノロジーを<span className="text-white font-medium border-b border-tech-cyan/50">キュレーション</span>し、<br className="hidden md:block" />
-                        あなたのビジネスを「来週」加速させる。
-                    </p>
-
-                    {/* CTA */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6 animate-fade-in-up delay-300">
-                        <Link href="/flow/demo" className="px-8 py-4 bg-tech-cyan text-tech-navy rounded-full font-bold text-lg hover:bg-white hover:shadow-[0_0_30px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group">
-                            実装デモを見る
-                            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                    {/* CTA (Mobile: Visible here, Desktop: Visible here) - Order handled by flex-col on mobile */}
+                    <div className="pt-4">
+                        <Link href="/flow/demo" className="w-full lg:w-auto px-8 py-4 bg-tech-cyan text-tech-navy rounded-full font-bold text-lg hover:bg-white hover:shadow-[0_0_30px_rgba(0,243,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-tech-cyan/20">
+                            デモ動画の詳細を確認する
+                            <Play className="group-hover:scale-110 transition-transform" size={20} />
                         </Link>
                     </div>
                 </div>
 
-                {/* Abstract Visual / Spacer for 3D Background Visibility */}
-                <div className="lg:col-span-4 hidden lg:block">
-                    {/* The 3D background will be visible here. 
-                         We can add a subtle overlay or interactive zone if needed. */}
-                </div>
-            </div>
+                {/* Right: Demo PV */}
+                <div className="order-1 lg:order-2">
+                    <div className="relative w-full aspect-video bg-black rounded-xl border-2 border-white/10 overflow-hidden shadow-2xl group">
+                        {/* Placeholder for Video - In production, use <video> tag */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black flex items-center justify-center">
+                            <div className="text-center">
+                                <PlayCircle size={64} className="text-white/20 mx-auto mb-4" />
+                                <p className="text-white/30 font-mono text-sm">DEMO VIDEO PLACEHOLDER</p>
+                                <p className="text-tech-cyan/50 text-xs mt-2">Loop / Muted / Autoplay</p>
+                            </div>
+                        </div>
 
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-                <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-white/50 rounded-full"></div>
+                        {/* Overlay Text */}
+                        <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs text-white/70 border border-white/10">
+                            ※ 実案件で開発した業務プロトタイプの一例
+                        </div>
+                    </div>
+                    {/* Visible on Mobile mainly but kept close to video */}
+                    <p className="text-center text-white/30 text-xs mt-3">
+                        入力 → 処理 → 出力が一目で分かる構成
+                    </p>
                 </div>
+
             </div>
         </section>
     );

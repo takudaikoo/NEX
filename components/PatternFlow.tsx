@@ -4,6 +4,7 @@ import React from 'react';
 import { GeneratedContent } from '../types';
 import FlowThreeBackground from './flow/FlowThreeBackground';
 import HeroSection from './flow/HeroSection';
+import TargetUserSection from './flow/TargetUserSection';
 import FirstOfferSection from './flow/FirstOfferSection';
 import ProblemSection from './flow/ProblemSection';
 import SolutionSection from './flow/SolutionSection';
@@ -48,6 +49,9 @@ const PatternFlow: React.FC<Props> = ({ content }) => {
                 {/* Section 1: First View (Hero) */}
                 <HeroSection />
 
+                {/* Section 1.5: Target User (NEW) */}
+                <TargetUserSection />
+
                 {/* Section 2: First Offer (Hook) */}
                 <FirstOfferSection />
 
@@ -60,7 +64,7 @@ const PatternFlow: React.FC<Props> = ({ content }) => {
                 {/* Section 7: USP */}
                 <USPSection />
 
-                {/* Section 8: Works */}
+                {/* Section 8: Works (Refactored) */}
                 <WorksSection />
 
                 {/* Section 9: Use Case Matrix */}

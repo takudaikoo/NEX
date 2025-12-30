@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ isApplicationPage = false, variant = 'd
                         </p>
 
                         {isApplicationPage ? (
-                            <a href={`mailto:info@xads.com?subject=30分ハンズオンサポートについて相談&body=${encodeURIComponent(`（以下をご記入の上、送信してください）
+                            <a href={`mailto:takudai.koo@gmail.com?subject=30分ハンズオンサポートについて相談&body=${encodeURIComponent(`（以下をご記入の上、送信してください）
 
 お名前：
 貴社名：
@@ -60,10 +60,10 @@ const Footer: React.FC<FooterProps> = ({ isApplicationPage = false, variant = 'd
                 )}
 
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-                    <div className="font-mono">© 2024 NEX AI Solutions.</div>
+                    <div className="font-mono">© 2025 NXS. All Rights Reserved.</div>
                     <div className="flex gap-6">
                         {activePage !== 'tokusho-ho' && (
-                            <Link href="/legal/tokusho-ho" className="hover:text-cyber-green transition-colors">特定商取引法に基づく表記</Link>
+                            <Link href="/cyber/legal/tokusho-ho" className="hover:text-cyber-green transition-colors">特定商取引法に基づく表記</Link>
                         )}
                         {activePage !== 'privacy' && (
                             <Link href="/cyber/legal/privacy" className="hover:text-cyber-green transition-colors">プライバシーポリシー</Link>
