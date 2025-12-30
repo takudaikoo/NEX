@@ -18,18 +18,18 @@ const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-5xl md:text-7xl font-bold font-noto-sans text-gray-900 mb-6 leading-tight tracking-tight">
-                    感覚の限界を、<br className="md:hidden" />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-impact-red to-gray-900 bg-[200%_auto] animate-shine">
-                        「物理」
+                <h1 className="text-3xl md:text-5xl font-bold font-noto-sans text-gray-900 mb-8 leading-tight tracking-tight">
+                    努力しているのに、<br />
+                    なぜか安定しない。<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-impact-red to-gray-900">
+                        その原因、動きの前にあります。
                     </span>
-                    で突破する。
                 </h1>
 
                 {/* Sub Headline */}
                 <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                    努力しているのに、なぜか安定しない。<br />
-                    その原因、動きの前にあります。<br /><br />
+                    フォームを直しても、トレーニングを積んでも、<br />
+                    なぜか再現性が出ない。<br /><br />
                     Impactは、<span className="font-bold text-gray-900">動作そのものではなく「動作が始まる前の身体条件」</span>を解析するサービスです。
                 </p>
 
