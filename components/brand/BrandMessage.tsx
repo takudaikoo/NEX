@@ -9,33 +9,29 @@ export default function BrandMessage() {
 
             {/* Main Message (Hero Copy) */}
             <div className="mb-24 animate-fade-in-up">
-                <h2 className="text-3xl md:text-5xl font-bold font-noto-sans leading-tight mb-8 tracking-wide text-white">
-                    人・技術・身体をつなぎ、<br />
-                    実装によって成果を生む。
+                <h2 className="text-2xl md:text-4xl font-bold font-noto-sans leading-tight mb-8 tracking-wide text-white">
+                    NXS（ネクサス）は、<br className="hidden md:block" />
+                    AI・テクノロジー・身体知を統合し、<br />
+                    現場で「機能する」状態まで導く<br className="hidden md:block" />
+                    実装パートナーです。
                 </h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-tech-cyan to-tech-green mx-auto rounded-full mb-8"></div>
-                <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    NXS（NEXUS）は、AI・テクノロジー・身体知を横断し、<br />
-                    「使える」「変わる」「結果が出る」状態まで落とし込む実装カンパニーです。
-                </p>
             </div>
 
             {/* Why We Exist (Definition) */}
             <div className="max-w-4xl mx-auto animate-fade-in-up delay-100">
-                <blockquote className="text-xl md:text-3xl font-bold leading-relaxed mb-10 text-white">
-                    NXSは、分断された「アイデア・スキル・身体」をつなぎ、<br />
-                    現場で機能する形に実装する会社です。
-                </blockquote>
-
-                <p className="text-lg text-white/60 leading-relaxed max-w-3xl mx-auto mb-16">
-                    多くの組織や個人は、「考えている」「学んでいる」「努力している」<br className="hidden md:block" />
-                    それでも成果に結びつかない状態にあります。<br /><br />
-
-                    <strong className="text-white text-2xl block mt-4">
-                        思想や理論で終わらせず、<br />
-                        成果が出るところまで伴走します。
-                    </strong>
+                <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto mb-16">
+                    多くの組織や個人が、知識を蓄え、努力を重ねながらも<br />
+                    「成果に結びつかない」という壁に突き当たっています。<br /><br />
+                    その原因は、アイデアと実行の間の「分断」にあります。
                 </p>
+
+                <blockquote className="text-xl md:text-3xl font-bold leading-relaxed mb-10 text-white">
+                    私たちは、思想や理論を掲げるだけではありません。<br />
+                    分断されたスキルと現場を繋ぎ、<br />
+                    「使える」「変わる」「結果が出る」まで、<br />
+                    実直に伴走し、形にします。
+                </blockquote>
 
                 {/* CTA */}
                 <div className="flex justify-center">

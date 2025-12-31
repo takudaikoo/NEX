@@ -135,7 +135,8 @@ export default function BrandPhilosophy() {
 
                 <div className="text-center mt-12 bg-gradient-to-r from-transparent via-white/5 to-transparent p-6 rounded-xl flex flex-col items-center gap-6">
                     <p className="text-xl text-white font-bold">
-                        NXSは、この3つを分断せず、一気通貫で扱います。
+                        NXSは、3つの事業で「知らない」から「わかる」へ、そして「できる」まで。<br className="hidden md:block" />
+                        あなたの人生が豊かになるお手伝いをします。
                     </p>
                     <a
                         href="#"
