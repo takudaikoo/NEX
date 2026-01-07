@@ -3,7 +3,7 @@
 import React from 'react';
 import { GeneratedContent } from '../types';
 import FlowThreeBackground from './flow/FlowThreeBackground';
-import { TargetUserSection, FirstOfferSection, ProblemSection, SolutionSection, USPSection, WorksSection, UseCaseMatrix } from './flow/FlowLPComponents';
+import { TargetUserSection, FirstOfferSection, SolutionSection, USPSection, WorksSection, UseCaseMatrix } from './flow/FlowLPComponents';
 import { HeroSection, SocialProofSection, StorySection, AuthoritySection, FlowSimulationSection, FAQSection, FooterCTA } from './flow/FlowConsultationComponents';
 import { X } from 'lucide-react';
 import Link from 'next/link';
@@ -48,8 +48,7 @@ const PatternFlow: React.FC<Props> = ({ content }) => {
                 {/* Section 2: First Offer (Hook) */}
                 <FirstOfferSection />
 
-                {/* Section 3 & 4: Problem & Agitation */}
-                <ProblemSection />
+
 
                 {/* Section 5 & 6: Solution & Comparison */}
                 <SolutionSection />
