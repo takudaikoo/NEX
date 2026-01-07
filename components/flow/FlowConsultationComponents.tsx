@@ -2,8 +2,65 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Quote, MessageSquare, ChevronDown, Check } from 'lucide-react';
+import { Quote, MessageSquare, ChevronDown, Check, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
+// --- HeroSection ---
+export const HeroSection: React.FC = () => {
+    return (
+        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-tech-navy">
+            {/* Background elements would be managed by FlowThreeBackground or similar if present in parent */}
+
+            <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 animate-fade-in-down">
+                    <span className="w-2 h-2 rounded-full bg-tech-cyan animate-pulse"></span>
+                    <span className="text-white/80 text-sm font-medium tracking-wide">Flow - Business Acceleration</span>
+                </div>
+
+                {/* Main Heading */}
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-none animate-fade-in-up font-montserrat">
+                    Build Fast.<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50">Grow Faster.</span>
+                </h1>
+
+                {/* Sub Heading */}
+                <p className="text-lg md:text-xl text-white/60 max-w-2xl mb-12 leading-relaxed animate-fade-in-up delay-100 font-light">
+                    半年かかる開発を、2週間に。<br />
+                    <span className="text-tech-cyan font-normal">Tech Curator</span> が最適なツールを選定・統合し、<br className="md:hidden" />あなたのビジネスを最速で加速させます。
+                </p>
+
+                {/* CTA */}
+                <div className="flex flex-col md:flex-row gap-6 w-full max-w-lg animate-fade-in-up delay-200">
+                    <Link
+                        href="/flow/reserve"
+                        className="group relative flex-1 bg-tech-cyan text-tech-navy font-bold py-4 px-8 rounded-full overflow-hidden transition-transform hover:scale-105"
+                    >
+                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        <span className="relative flex items-center justify-center gap-2">
+                            無料相談を予約
+                            <ArrowRight size={18} />
+                        </span>
+                    </Link>
+                    <Link
+                        href="#works" // Assuming anchor exists or linking to works section
+                        className="flex-1 bg-transparent border border-white/20 text-white font-bold py-4 px-8 rounded-full hover:bg-white/5 transition-colors flex items-center justify-center"
+                    >
+                        事例を見る
+                    </Link>
+                </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+                <span className="text-xs text-white tracking-widest uppercase">Scroll</span>
+                <div className="w-px h-12 bg-gradient-to-b from-white to-transparent"></div>
+            </div>
+        </section>
+    );
+};
+
+// --- SocialProofSection ---
 export const SocialProofSection = () => (
     <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
         <div className="container mx-auto max-w-6xl">
@@ -95,6 +152,7 @@ export const SocialProofSection = () => (
     </section>
 );
 
+// --- StorySection ---
 export const StorySection = () => (
     <section className="py-32 px-6 bg-[#111] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
@@ -157,11 +215,11 @@ export const StorySection = () => (
     </section>
 );
 
+// --- AuthoritySection ---
 export const AuthoritySection = () => (
     <section className="py-12 border-y border-white/5 bg-white/[0.02]">
         <div className="container mx-auto text-center opacity-50 grayscale hover:grayscale-0 transition-all">
             <div className="flex flex-wrap justify-center gap-12 items-center text-4xl font-bold text-white/20">
-                {/* Text placeholders for logos as per instruction to use simple implementation first */}
                 <span>Shopify</span>
                 <span>Stripe</span>
                 <span>Notion</span>
@@ -173,14 +231,13 @@ export const AuthoritySection = () => (
     </section>
 );
 
+// --- FlowSimulationSection ---
 export const FlowSimulationSection = () => (
     <section className="py-24 px-6 bg-tech-navy">
         <div className="container mx-auto max-w-5xl">
             <h2 className="text-center text-3xl font-bold mb-16 font-noto-sans text-white">開発フロー</h2>
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 relative">
-                {/* Connector Line */}
                 <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-white/10 -z-10 transform -translate-y-1/2"></div>
-
                 <FlowStep number="01" title="Hearing" desc="30分" />
                 <FlowStep number="02" title="Curation" desc="設計" />
                 <FlowStep number="03" title="Prototype" desc="デモ確認(契約)" highlight />
@@ -198,6 +255,7 @@ const FlowStep = ({ number, title, desc, highlight }: { number: string, title: s
     </div>
 );
 
+// --- FAQSection ---
 export const FAQSection = () => (
     <section className="py-24 px-6 bg-tech-navy-light/20">
         <div className="container mx-auto max-w-3xl">
@@ -226,6 +284,7 @@ const FAQItem = ({ q, a }: { q: string, a: string }) => (
     </div>
 );
 
+// --- FlowLegalFooter ---
 export const FlowLegalFooter = ({ activePage }: { activePage?: 'tokusho-ho' | 'privacy' }) => (
     <footer className="relative py-12 px-6 overflow-hidden bg-tech-navy border-t border-white/10">
         <div className="container mx-auto max-w-4xl text-center relative z-10">
@@ -245,9 +304,9 @@ export const FlowLegalFooter = ({ activePage }: { activePage?: 'tokusho-ho' | 'p
     </footer>
 );
 
+// --- FooterCTA ---
 export const FooterCTA = () => (
     <footer className="relative py-32 px-6 overflow-hidden">
-        {/* Reuse simple background effect or just gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-tech-cyan/10 to-tech-navy pointer-events-none"></div>
 
         <div className="container mx-auto max-w-4xl text-center relative z-10">

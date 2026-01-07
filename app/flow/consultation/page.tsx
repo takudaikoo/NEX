@@ -1,9 +1,19 @@
 "use client";
 
+// Imports updated
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, Send, CheckCircle, Video, Loader2 } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
+import {
+    SocialProofSection,
+    StorySection,
+    AuthoritySection,
+    FlowSimulationSection,
+    FAQSection,
+    FlowLegalFooter,
+    FooterCTA
+} from '@/components/flow/FlowConsultationComponents';
 
 export default function ConsultationPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -101,7 +111,7 @@ export default function ConsultationPage() {
     }
 
     return (
-        <div className="min-h-screen bg-tech-navy text-white relative">
+        <div className="min-h-screen bg-tech-navy text-white relative font-noto-sans selection:bg-tech-cyan selection:text-tech-navy">
             {/* Header / Nav */}
             <header className="absolute top-0 left-0 w-full p-6 z-20 flex justify-between items-center">
                 <Link href="/flow" className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
@@ -114,7 +124,8 @@ export default function ConsultationPage() {
                 </Link>
             </header>
 
-            <main className="container mx-auto px-6 py-24 flex flex-col md:flex-row gap-12 items-start justify-center max-w-6xl">
+            {/* Hero Section */}
+            <section className="container mx-auto px-6 py-24 flex flex-col md:flex-row gap-12 items-start justify-center max-w-6xl relative z-10">
 
                 {/* Left Side: Context */}
                 <div className="w-full md:w-5/12 pt-12">
@@ -201,17 +212,18 @@ export default function ConsultationPage() {
                         </p>
                     </form>
                 </div>
-            </main>
+            </section>
 
-            {/* Simple Footer for Consultation Page */}
-            <footer className="container mx-auto px-6 pb-8 text-center text-sm text-white/20">
-                <div className="flex justify-center gap-6 mb-4">
-                    <Link href="/flow" className="hover:text-white transition-colors">トップページ</Link>
-                    <Link href="/flow/legal/tokusho-ho" className="hover:text-white transition-colors">特定商取引法に基づく表記</Link>
-                    <Link href="/flow/legal/privacy" className="hover:text-white transition-colors">プライバシーポリシー</Link>
-                </div>
-                <div>&copy; 2025 Tech Curator. All rights reserved.</div>
-            </footer>
+            {/* Remaining Sections */}
+            <AuthoritySection />
+            <StorySection />
+            <SocialProofSection />
+            <FlowSimulationSection />
+            <FAQSection />
+            <FooterCTA />
+
+            {/* Legal Footer */}
+            <FlowLegalFooter />
         </div>
     );
 }

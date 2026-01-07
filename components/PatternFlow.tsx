@@ -3,15 +3,8 @@
 import React from 'react';
 import { GeneratedContent } from '../types';
 import FlowThreeBackground from './flow/FlowThreeBackground';
-import HeroSection from './flow/HeroSection';
-import TargetUserSection from './flow/TargetUserSection';
-import FirstOfferSection from './flow/FirstOfferSection';
-import ProblemSection from './flow/ProblemSection';
-import SolutionSection from './flow/SolutionSection';
-import USPSection from './flow/USPSection';
-import WorksSection from './flow/WorksSection';
-import UseCaseMatrix from './flow/UseCaseMatrix';
-import { SocialProofSection, StorySection, AuthoritySection, FlowSimulationSection, FAQSection, FooterCTA } from './flow/RemainingSections';
+import { TargetUserSection, FirstOfferSection, ProblemSection, SolutionSection, USPSection, WorksSection, UseCaseMatrix } from './flow/FlowLPComponents';
+import { HeroSection, SocialProofSection, StorySection, AuthoritySection, FlowSimulationSection, FAQSection, FooterCTA } from './flow/FlowConsultationComponents';
 import { X } from 'lucide-react';
 import Link from 'next/link';
 
