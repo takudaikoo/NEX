@@ -20,12 +20,11 @@ const getAuthClient = async () => {
         return null;
     }
 
-    const auth = new google.auth.JWT(
-        clientEmail,
-        undefined,
-        privateKey,
-        SCOPES
-    );
+    const auth = new google.auth.JWT({
+        email: clientEmail,
+        key: privateKey,
+        scopes: SCOPES
+    });
 
     return auth;
 };
@@ -37,8 +36,12 @@ interface TimeSlot {
 }
 
 export async function getBusyIntervals(calendarId: string, timeMin: Date, timeMax: Date): Promise<TimeSlot[]> {
+    console.log(`[GoogleCalendar] freebusy query for ${calendarId} from ${timeMin.toISOString()} to ${timeMax.toISOString()}`);
     const auth = await getAuthClient();
-    if (!auth) return [];
+    if (!auth) {
+        console.error("[GoogleCalendar] Auth client failed to initialize.");
+        return [];
+    }
 
     const calendar = google.calendar({ version: 'v3', auth });
 
@@ -52,14 +55,23 @@ export async function getBusyIntervals(calendarId: string, timeMin: Date, timeMa
         });
 
         const busy = response.data.calendars?.[calendarId]?.busy;
-        if (!busy) return [];
+        if (!busy) {
+            console.log(`[GoogleCalendar] No busy data found for ${calendarId}. Response keys: ${Object.keys(response.data.calendars || {})}`);
+            // Often 'errors' array is present in the calendar object if permission denied
+            const calObj = response.data.calendars?.[calendarId];
+            if (calObj && (calObj as any).errors) {
+                console.error(`[GoogleCalendar] API Errors for ${calendarId}:`, (calObj as any).errors);
+            }
+            return [];
+        }
 
+        console.log(`[GoogleCalendar] Found ${busy.length} busy intervals.`);
         return busy.map((interval) => ({
             start: new Date(interval.start!),
             end: new Date(interval.end!),
         }));
     } catch (error) {
-        console.error('Error fetching freebusy:', error);
+        console.error('[GoogleCalendar] Error fetching freebusy:', error);
         return [];
     }
 }

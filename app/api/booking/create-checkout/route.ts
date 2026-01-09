@@ -1,7 +1,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase-admin';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2023-10-16', // Use latest stable
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
         // 0. Free Booking Logic
         if (price === 0) {
             // Fetch service duration to calculate end time
-            const { data: service } = await supabase
+            const { data: service } = await supabaseAdmin
                 .from('booking_services')
                 .select('duration_minutes')
                 .eq('id', serviceId)
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
             const start = new Date(startTime);
             const end = new Date(start.getTime() + duration * 60000);
 
-            const { error } = await supabase
+            const { error } = await supabaseAdmin
                 .from('bookings')
                 .insert({
                     service_id: serviceId,

@@ -1,7 +1,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase-admin';
 import { createCalendarEvent } from '@/lib/booking/google-calendar';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
             try {
                 // 1. Record in DB
-                const { data: booking, error: dbError } = await supabase.from('bookings').insert({
+                const { data: booking, error: dbError } = await supabaseAdmin.from('bookings').insert({
                     service_id: meta.serviceId,
                     customer_name: meta.customerName || 'Guest', // metadata doesn't support non-ascii well historically? 
                     // Actually modern stripe handles utf8 in metadata usually.
@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
                 */
 
                 // Need service config to know WHICH calendar ID to use
-                const { data: service } = await supabase.from('booking_services').select('google_calendar_id').eq('id', meta.serviceId).single();
+                const { data: service } = await supabaseAdmin.from('booking_services').select('google_calendar_id').eq('id', meta.serviceId).single();
                 const calendarId = service?.google_calendar_id || 'primary';
 
                 await createCalendarEvent(calendarId, {

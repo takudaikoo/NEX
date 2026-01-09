@@ -25,28 +25,32 @@ export async function GET(req: NextRequest) {
             .single();
 
         if (error || !service) {
-            // Fallback for dev if DB empty
-            console.warn("Service not found for availability check, using mock defaults.");
-            // Return mock data for testing UI without DB setup
+            console.warn("[Availability] Service not found or error:", error);
+            // ... (keep existing fallback)
             const mockSlots = [];
             const startHour = 10;
             const endHour = 18;
             for (let i = startHour; i < endHour; i++) {
                 const d = new Date(date);
-                d.setHours(i, 0, 0, 0); // Local time? Careful with server timezone.
-                // Generally dates passed are ISO.
-                // Constructing new Date(date) creates it in server local unless UTC specified.
+                d.setHours(i, 0, 0, 0);
                 mockSlots.push(d.toISOString());
             }
             return NextResponse.json({ slots: mockSlots });
         }
 
-        const calendarId = service.google_calendar_id || 'primary'; // Fallback to primary if not set
+        const calendarId = service.google_calendar_id || 'primary';
+        console.log(`[Availability] Checking for Service: ${serviceId}, CalendarID: ${calendarId}, Date: ${dateStr}`);
 
         // 2. Calculate Slots
-        const slots = await getAvailableSlots(calendarId, date, service.duration_minutes);
+        try {
+            const slots = await getAvailableSlots(calendarId, date, service.duration_minutes);
+            console.log(`[Availability] Found ${slots.length} slots.`);
+            return NextResponse.json({ slots: slots.map(s => s.toISOString()) });
+        } catch (calcError) {
+            console.error("[Availability] Slot Calculation Error:", calcError);
+            throw calcError;
+        }
 
-        return NextResponse.json({ slots: slots.map(s => s.toISOString()) });
     } catch (err: any) {
         console.error('Availability API Error:', err);
         return NextResponse.json({ error: err.message }, { status: 500 });
