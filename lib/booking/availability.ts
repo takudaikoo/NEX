@@ -27,14 +27,24 @@ export async function getAvailableSlots(
     const busySlots = await getBusyIntervals(calendarId, dayStart, dayEnd);
 
     const availableSlots: Date[] = [];
-    let currentSlot = new Date(dayStart);
+    // Business Hours: 10:00 - 22:00 JST
+    // Set start time to 10:00 on the target day
+    const businessStart = new Date(dayStart);
+    businessStart.setHours(10, 0, 0, 0);
+
+    const businessEnd = new Date(dayStart);
+    businessEnd.setHours(22, 0, 0, 0);
+
+    // Initialize currentSlot to the later of (businessStart, dayStart)
+    // Though dayStart is 00:00, so businessStart (10:00) is always later.
+    let currentSlot = new Date(businessStart);
 
     // Business Logic: 2 Hour Buffer relative to "Now"
     const now = new Date();
     const minTime = new Date(now.getTime() + 2 * 60 * 60 * 1000);
 
-    // Loop through the day
-    while (currentSlot.getTime() + durationMinutes * 60000 <= dayEnd.getTime()) {
+    // Loop through the day until Business End
+    while (currentSlot.getTime() + durationMinutes * 60000 <= businessEnd.getTime()) {
         const slotEnd = new Date(currentSlot.getTime() + durationMinutes * 60000);
 
         // 1. Buffer Check
