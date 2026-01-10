@@ -73,8 +73,8 @@ export default function BrandServices({ setHoverState }: Props) {
 
     return (
         <section id="brand-services" className="relative w-full pt-0 pb-24 md:pb-48 z-10 px-4 md:px-8">
-            <h2 className="text-xl md:text-2xl font-bold font-sans text-center text-white mb-4 tracking-widest uppercase opacity-70">
-                OUR DOMAINS
+            <h2 className="text-xl md:text-2xl font-bold font-sans text-center text-white mb-4 tracking-widest uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] animate-pulse">
+                事業一覧
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto h-auto md:h-[450px]">

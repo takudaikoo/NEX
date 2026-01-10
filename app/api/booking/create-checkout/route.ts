@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { supabaseAdmin } from '@/lib/supabase-admin';
+import { createCalendarEvent } from '@/lib/booking/google-calendar';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2023-10-16', // Use latest stable
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
             // Fetch service duration to calculate end time
             const { data: service } = await supabaseAdmin
                 .from('booking_services')
-                .select('duration_minutes')
+                .select('duration_minutes, google_calendar_id')
                 .eq('id', serviceId)
                 .single();
 
@@ -52,6 +53,28 @@ export async function POST(req: NextRequest) {
                 });
 
             if (error) throw error;
+
+            // 1. Create Google Calendar Event
+            const calendarId = service?.google_calendar_id || 'primary';
+            await createCalendarEvent(calendarId, {
+                summary: `予約: ${customerName} (${serviceId})`,
+                description: `Email: ${customerEmail}\nNotes: ${notes}\n(Free Booking)`,
+                start: start,
+                end: end
+            });
+
+            // 2. Send Emails
+            const { sendBookingConfirmation } = await import('@/lib/email/booking-email');
+            await sendBookingConfirmation({
+                customerName: customerName || 'Guest',
+                customerEmail: customerEmail,
+                serviceName: serviceName || serviceId,
+                startTime: startTime,
+                notes: notes,
+                price: 0,
+                paymentMethod: 'Free'
+            });
+
             return NextResponse.json({ success: true, url: null });
         }
 

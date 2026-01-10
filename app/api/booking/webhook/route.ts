@@ -97,9 +97,20 @@ export async function POST(req: NextRequest) {
 
                 console.log('Booking Finalized Successfully');
 
+                // 3. Send Emails
+                const { sendBookingConfirmation } = await import('@/lib/email/booking-email');
+                await sendBookingConfirmation({
+                    customerName: meta.customerName || 'Guest',
+                    customerEmail: meta.customerEmail,
+                    serviceName: meta.serviceName || meta.serviceId, // Try to pass name in metadata later or lookup
+                    startTime: meta.startTime,
+                    notes: meta.notes,
+                    price: session.amount_total ? session.amount_total : 0,
+                    paymentMethod: 'Credit Card'
+                });
+
             } catch (err) {
                 console.error('Fulfillment Error:', err);
-                // Return 500 to Stripe to retry webhook?
                 return NextResponse.json({ error: 'Fulfillment failed' }, { status: 500 });
             }
         }
