@@ -76,6 +76,26 @@ export async function getBusyIntervals(calendarId: string, timeMin: Date, timeMa
     }
 }
 
+// Debugging: List actual events to verify permissions
+export async function listEvents(calendarId: string, timeMin: Date, timeMax: Date) {
+    const auth = await getAuthClient();
+    if (!auth) return [];
+    const calendar = google.calendar({ version: 'v3', auth });
+    try {
+        const res = await calendar.events.list({
+            calendarId,
+            timeMin: timeMin.toISOString(),
+            timeMax: timeMax.toISOString(),
+            singleEvents: true,
+            orderBy: 'startTime',
+        });
+        return res.data.items || [];
+    } catch (e: any) {
+        console.error('[GoogleCalendar] listEvents Error:', e);
+        return [];
+    }
+}
+
 export async function createCalendarEvent(
     calendarId: string,
     eventDetails: {

@@ -44,6 +44,25 @@ export async function GET(req: NextRequest) {
         // 2. Calculate Slots
         try {
             const slots = await getAvailableSlots(calendarId, date, service.duration_minutes);
+
+            // DEBUG: Check actual event visibility if slots seem wrong
+            if (slots.length > 10) { // arbitrary threshold implying "too open"
+                const { listEvents } = await import('@/lib/booking/google-calendar');
+                // Re-calculate day range (duplicated logic, but safe for debug)
+                const jstDate = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+                const datePart = jstDate.toISOString().split('T')[0];
+                const dStart = new Date(`${datePart}T00:00:00+09:00`);
+                const dEnd = new Date(`${datePart}T23:59:59+09:00`);
+
+                const events = await listEvents(calendarId, dStart, dEnd);
+                console.log(`[Availability Debug] Actual Events visible in Calendar (${calendarId}): ${events.length}`);
+                events.forEach(e => console.log(` - Event: ${e.summary} (${e.start?.dateTime} - ${e.end?.dateTime})`));
+
+                if (events.length === 0) {
+                    console.warn(`[Availability Debug] NO EVENTS FOUND. Likely permission issue. The system thinks the day is empty.`);
+                }
+            }
+
             console.log(`[Availability] Found ${slots.length} slots.`);
             return NextResponse.json({ slots: slots.map(s => s.toISOString()) });
         } catch (calcError) {
