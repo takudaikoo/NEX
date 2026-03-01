@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google"; // Import fonts
+import { Montserrat, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
     variable: "--font-montserrat",
-    weight: ["300", "400", "500", "600", "700"], // Weights needed
+    weight: ["300", "400", "500", "600", "700"],
 });
 
 const notoSansJP = Noto_Sans_JP({
@@ -20,9 +20,24 @@ const notoSerifJP = Noto_Serif_JP({
     weight: ["400", "700"],
 });
 
+const siteTitle = "NXS | 人・技術・身体をつなぎ、実装する";
+const siteDescription = "NXS（NEXUS）は、AI・テクノロジー・身体知を横断し、「使える」「変わる」「結果が出る」状態まで落とし込む実装カンパニーです。";
+
 export const metadata: Metadata = {
-    title: "NXS | 人・技術・身体をつなぎ、実装する",
-    description: "NXS（NEXUS）は、AI・テクノロジー・身体知を横断し、「使える」「変わる」「結果が出る」状態まで落とし込む実装カンパニーです。",
+    title: siteTitle,
+    description: siteDescription,
+    openGraph: {
+        title: siteTitle,
+        description: siteDescription,
+        siteName: "NXS",
+        locale: "ja_JP",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: siteTitle,
+        description: siteDescription,
+    },
 };
 
 export default function RootLayout({
@@ -31,11 +46,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${montserrat.variable} ${notoSansJP.variable} ${notoSerifJP.variable}`}>
+        <html lang="ja" className={`${montserrat.variable} ${notoSansJP.variable} ${notoSerifJP.variable}`}>
             <body>
                 {children}
             </body>
         </html>
     );
 }
-// Force rebuild timestamp: 2025-12-20T02:05:00

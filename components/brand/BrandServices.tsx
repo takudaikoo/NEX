@@ -24,11 +24,6 @@ export default function BrandServices({ setHoverState }: Props) {
         };
 
         const observerCallback = (entries: IntersectionObserverEntry[]) => {
-            // Only run on mobile/tablet (touch devices) or if we want scroll to drive it on desktop too.
-            // For simplicity, we let it run always, but mouse hover will override visual focus if needed via CSS behavior,
-            // though here we are driving state. To avoid conflicts, we prioritize mouse enter/leave in the handlers below,
-            // but for the background setHoverState, updates from scroll are fine.
-
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     if (entry.target === flowRef.current) {
@@ -41,11 +36,6 @@ export default function BrandServices({ setHoverState }: Props) {
                         setActiveCard('impact');
                         setHoverState('impact');
                     }
-                } else {
-                    // When leaving view, if it was the active one, clear it?
-                    // But we might want to keep the last one active until a new one takes over or we scroll completely out.
-                    // Let's check if the currently active card is the one leaving.
-                    // This logic can be tricky with multiple entries.
                 }
             });
         };
@@ -73,8 +63,8 @@ export default function BrandServices({ setHoverState }: Props) {
 
     return (
         <section id="brand-services" className="relative w-full pt-0 pb-24 md:pb-48 z-10 px-4 md:px-8">
-            <h2 className="text-xl md:text-2xl font-bold font-sans text-center text-white mb-4 tracking-widest uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] animate-pulse">
-                事業一覧
+            <h2 className="text-sm md:text-base font-mono text-center text-white/50 mb-8 tracking-[0.3em] uppercase">
+                Our Services
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto h-auto md:h-[450px]">

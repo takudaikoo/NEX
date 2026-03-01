@@ -1,11 +1,17 @@
 "use client";
 
 import React, { useState } from 'react';
-import HubThreeScene from '@/components/hub/HubThreeScene';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import BrandHero from '@/components/brand/BrandHero';
 import BrandServices from '@/components/brand/BrandServices';
 import BrandMessage from '@/components/brand/BrandMessage';
 import BrandPhilosophy from '@/components/brand/BrandPhilosophy';
 import BrandFooter from '@/components/brand/BrandFooter';
+
+const HubThreeScene = dynamic(() => import('@/components/hub/HubThreeScene'), {
+    ssr: false,
+});
 
 export default function Home() {
     const [hoverState, setHoverState] = useState<'cyber' | 'impact' | 'flow' | null>(null);
@@ -21,24 +27,34 @@ export default function Home() {
             {/* Scrollable Content Wrapper */}
             <div className="relative z-10 w-full overflow-x-hidden">
 
-                {/* Header / Nav (Brand) */}
-                <header className="fixed top-0 left-0 w-full p-6 md:p-8 z-50 flex justify-between items-center pointer-events-none mix-blend-difference">
-                    <div className="text-2xl font-bold tracking-[0.5em] text-white">NXS</div>
-                    <div className="text-xs text-white/50 font-mono hidden md:block">INTERFACE PROTOCOL</div>
+                {/* Header */}
+                <header className="fixed top-0 left-0 w-full p-6 md:p-8 z-50 flex justify-between items-center">
+                    <Link href="/" className="text-2xl font-bold tracking-[0.5em] text-white hover:text-white/80 transition-colors">
+                        NXS
+                    </Link>
+                    <nav aria-label="メインナビゲーション" className="flex items-center gap-6">
+                        <Link href="/contact" className="text-sm text-white/60 hover:text-white transition-colors font-mono">
+                            Contact
+                        </Link>
+                    </nav>
                 </header>
 
-                {/* 1. Services (Now at Top) */}
-                <div className="pt-16 md:pt-20">
+                {/* Main Content */}
+                <main>
+                    {/* 1. Hero */}
+                    <BrandHero />
+
+                    {/* 2. Services */}
                     <BrandServices setHoverState={setHoverState} />
-                </div>
 
-                {/* 2. Message (Hero + About content merged) */}
-                <BrandMessage />
+                    {/* 3. Message */}
+                    <BrandMessage />
 
-                {/* 3. Philosophy */}
-                <BrandPhilosophy />
+                    {/* 4. Philosophy */}
+                    <BrandPhilosophy />
+                </main>
 
-                {/* 4. Footer */}
+                {/* 5. Footer */}
                 <BrandFooter />
 
             </div>

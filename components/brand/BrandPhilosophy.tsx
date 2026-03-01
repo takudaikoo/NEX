@@ -1,153 +1,91 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight, ArrowUp } from 'lucide-react';
+import { useActiveOnScroll } from '@/hooks/useActiveOnScroll';
+
+const steps = [
+    {
+        key: 'think' as const,
+        title: 'Think',
+        subtitle: '構想・理解・設計',
+        description: '本質的な課題は何か。\nあるべき姿はどのようなものか。\nまずは構造を正しく捉えます。',
+        activeClass: 'border-white/40 bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.1)]',
+        numberClass: 'text-white/30',
+        titleClass: 'text-white',
+    },
+    {
+        key: 'build' as const,
+        title: 'Build',
+        subtitle: '実装・仕組み化・習得',
+        description: '絵に描いた餅にしない。\n実際に機能するシステムや\n身体動作として構築します。',
+        activeClass: 'border-tech-cyan bg-tech-cyan/10 shadow-[0_0_30px_rgba(0,255,255,0.1)]',
+        numberClass: 'text-tech-cyan/30',
+        titleClass: 'text-tech-cyan',
+    },
+    {
+        key: 'perform' as const,
+        title: 'Perform',
+        subtitle: '成果・再現性・継続',
+        description: '一度きりでは意味がない。\n継続的に成果を出し続ける\n「状態」を定着させます。',
+        activeClass: 'border-impact-red bg-impact-red/10 shadow-[0_0_30px_rgba(255,46,46,0.1)]',
+        numberClass: 'text-impact-red/30',
+        titleClass: 'text-impact-red',
+    },
+] as const;
 
 export default function BrandPhilosophy() {
-    const [activeStep, setActiveStep] = useState<'think' | 'build' | 'perform' | null>(null);
-
-    const thinkRef = useRef<HTMLDivElement>(null);
-    const buildRef = useRef<HTMLDivElement>(null);
-    const performRef = useRef<HTMLDivElement>(null);
-
-    // Mobile Scroll Detection
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -20% 0px',
-            threshold: 0.6,
-        };
-
-        const observerCallback = (entries: IntersectionObserverEntry[]) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    if (entry.target === thinkRef.current) {
-                        setActiveStep('think');
-                    } else if (entry.target === buildRef.current) {
-                        setActiveStep('build');
-                    } else if (entry.target === performRef.current) {
-                        setActiveStep('perform');
-                    }
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        if (thinkRef.current) observer.observe(thinkRef.current);
-        if (buildRef.current) observer.observe(buildRef.current);
-        if (performRef.current) observer.observe(performRef.current);
-
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
+    const { refs, activeKey } = useActiveOnScroll({
+        keys: ['think', 'build', 'perform'],
+    });
 
     return (
         <section className="relative w-full py-24 px-6 md:px-12 bg-black/60 backdrop-blur-sm z-10">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-xl md:text-2xl font-bold font-sans text-tech-green mb-16 text-center tracking-widest uppercase">
-                    OUR APPROACH
+                <h2 className="text-sm md:text-base font-mono text-tech-green mb-16 text-center tracking-[0.3em] uppercase">
+                    Our Approach
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8">
-
-                    {/* Think */}
-                    <div
-                        ref={thinkRef}
-                        className={`relative group p-8 border rounded-2xl transition-all duration-500
-                            ${activeStep === 'think'
-                                ? 'border-white/40 bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.1)]'
-                                : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
-                    >
-                        <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
-                            ${activeStep === 'think' ? 'text-white/30' : 'text-white/10 group-hover:text-white/20'}`}>
-                            01
-                        </div>
-                        <h3 className="text-3xl font-bold text-white mb-4">Think</h3>
-                        <p className="text-sm font-mono text-white/40 mb-6">構想・理解・設計</p>
-                        <p className="text-white/70 leading-relaxed">
-                            本質的な課題は何か。<br />
-                            あるべき姿はどのようなものか。<br />
-                            まずは構造を正しく捉えます。
-                        </p>
-                    </div>
-
-                    {/* Arrow for Desktop */}
-                    <div className="hidden md:flex items-center justify-center text-white/20 absolute left-1/3 top-1/2 -translate-x-1/2 z-20">
-                        <ArrowRight size={32} />
-                    </div>
-
-                    {/* Build */}
-                    <div
-                        ref={buildRef}
-                        className={`relative group p-8 border rounded-2xl transition-all duration-500
-                            ${activeStep === 'build'
-                                ? 'border-tech-cyan bg-tech-cyan/10 shadow-[0_0_30px_rgba(0,255,255,0.1)]'
-                                : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
-                    >
-                        <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
-                            ${activeStep === 'build' ? 'text-tech-cyan/30' : 'text-white/10 group-hover:text-white/20'}`}>
-                            02
-                        </div>
-                        <h3 className={`text-3xl font-bold mb-4 transition-colors duration-500
-                            ${activeStep === 'build' ? 'text-tech-cyan' : 'text-white'}`}>
-                            Build
-                        </h3>
-                        <p className="text-sm font-mono text-white/40 mb-6">実装・仕組み化・習得</p>
-                        <p className="text-white/70 leading-relaxed">
-                            絵に描いた餅にしない。<br />
-                            実際に機能するシステムや<br />
-                            身体動作として構築します。
-                        </p>
-                    </div>
-
-                    {/* Arrow for Desktop */}
-                    <div className="hidden md:flex items-center justify-center text-white/20 absolute right-1/3 top-1/2 translate-x-1/2 z-20">
-                        <ArrowRight size={32} />
-                    </div>
-
-                    {/* Perform */}
-                    <div
-                        ref={performRef}
-                        className={`relative group p-8 border rounded-2xl transition-all duration-500
-                            ${activeStep === 'perform'
-                                ? 'border-impact-red bg-impact-red/10 shadow-[0_0_30px_rgba(255,46,46,0.1)]'
-                                : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
-                    >
-                        <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
-                            ${activeStep === 'perform' ? 'text-impact-red/30' : 'text-white/10 group-hover:text-white/20'}`}>
-                            03
-                        </div>
-                        <h3 className={`text-3xl font-bold mb-4 transition-colors duration-500
-                            ${activeStep === 'perform' ? 'text-impact-red' : 'text-white'}`}>
-                            Perform
-                        </h3>
-                        <p className="text-sm font-mono text-white/40 mb-6">成果・再現性・継続</p>
-                        <p className="text-white/70 leading-relaxed">
-                            一度きりでは意味がない。<br />
-                            継続的に成果を出し続ける<br />
-                            「状態」を定着させます。
-                        </p>
-                    </div>
-
+                    {steps.map((step, index) => {
+                        const isActive = activeKey === step.key;
+                        return (
+                            <div
+                                key={step.key}
+                                ref={refs[step.key] as React.RefObject<HTMLDivElement>}
+                                className={`relative group p-8 border rounded-2xl transition-all duration-500
+                                    ${isActive ? step.activeClass : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                            >
+                                <div className={`text-5xl font-bold absolute top-4 right-6 transition-colors duration-500
+                                    ${isActive ? step.numberClass : 'text-white/10 group-hover:text-white/20'}`}>
+                                    {String(index + 1).padStart(2, '0')}
+                                </div>
+                                <h3 className={`text-3xl font-bold mb-4 transition-colors duration-500
+                                    ${isActive ? step.titleClass : 'text-white'}`}>
+                                    {step.title}
+                                </h3>
+                                <p className="text-sm font-mono text-white/40 mb-6">{step.subtitle}</p>
+                                <p className="text-white/70 leading-relaxed whitespace-pre-line">
+                                    {step.description}
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
 
                 <div className="text-center mt-12 bg-gradient-to-r from-transparent via-white/5 to-transparent p-6 rounded-xl flex flex-col items-center gap-6">
-                    <p className="text-xl text-white font-bold">
-                        NXSは、3つの事業で「知らない」から「わかる」へ、そして「できる」まで。<br className="hidden md:block" />
+                    <p className="text-lg md:text-xl text-white font-bold leading-relaxed">
+                        NXSは、3つの事業で「知らない」から「わかる」へ、<br className="hidden md:block" />
+                        そして「できる」まで。<br className="hidden md:block" />
                         あなたの人生が豊かになるお手伝いをします。
                     </p>
-                    <a
-                        href="#"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-tech-cyan hover:text-black transition-all duration-300"
+                    <button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-white/90 transition-all duration-300"
                     >
-                        事業詳細を見る <ArrowRight size={18} />
-                    </a>
+                        事業詳細を見る <ArrowUp size={18} />
+                    </button>
                 </div>
             </div>
         </section>

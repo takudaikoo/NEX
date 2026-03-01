@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export default function BrandMessage() {
@@ -35,7 +36,7 @@ export default function BrandMessage() {
 
                 {/* CTA */}
                 <div className="flex justify-center">
-                    <a
+                    <Link
                         href="/contact"
                         className="group relative px-10 py-5 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
                     >
@@ -43,7 +44,7 @@ export default function BrandMessage() {
                             NXSについて問い合わせる
                             <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                         </span>
-                    </a>
+                    </Link>
                 </div>
             </div>
 
